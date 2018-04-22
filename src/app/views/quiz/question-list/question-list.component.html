@@ -1,3 +1,29 @@
-<p>
-  question-list works!
-</p>
+<div class="row">
+  <div class="questions-list col-6">
+    <div class="row">
+      <div class="col-12">
+        <h3>Question list</h3>
+        <ul class="list-group" [sortablejs]="questions" [sortablejsOptions]="questionOptions">
+          <a *ngFor="let question of questions"
+             class="list-group-item"
+             [routerLink]="[question.id]"
+             routerLinkActive="active">
+            <i class="drag-handle glyphicon glyphicon-menu-hamburger"></i>
+            <span>{{ question.order }}.</span>
+            <span>{{ question.question }}</span>
+          </a>
+        </ul>
+        <ul class="list-group">
+          <li class="list-group-item new-question">
+            <div class="col-12" (click)="onNewQuestion()">
+              New Question
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <router-outlet></router-outlet>
+  </div>
+</div>

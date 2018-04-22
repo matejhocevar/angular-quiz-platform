@@ -1,0 +1,33 @@
+@import '../../../../variables.styl';
+
+.questions-list {
+  overflow-y: auto;
+
+  .list-group-item {
+    * {
+      display: inline-block;
+    }
+
+    .drag-handle {
+      display: none;
+      width: 15px;
+      height: 15px;
+      background: red;
+      cursor: grab;
+    }
+
+    &:hover {
+      .drag-handle {
+        display: inline-block;
+      }
+    }
+
+    &.new-question {
+      color: #fff;
+      background: #5F9EDF;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}
+

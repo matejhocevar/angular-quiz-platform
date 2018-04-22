@@ -1,3 +1,85 @@
-<p>
-  question-item works!
-</p>
+<h3>{{ editMode ? 'Edit' : 'New' }} Question</h3>
+<form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-12">
+      <button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="!questionForm.valid">Save</button>
+      <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <label for="question">Question</label>
+        <textarea
+          type="text"
+          id="question"
+          formControlName="question"
+          class="form-control"
+          rows="1"
+          #questionRef
+        ></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <label for="hint">Hint</label>
+        <input
+          type="text"
+          id="hint"
+          formControlName="hint"
+          class="form-control"
+          #hintRef
+        >
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-12" formArrayName="answers">
+      <h5>Answers</h5>
+      <div
+        class="row"
+        *ngFor="let answerCtrl of questionForm.get('answers').controls; let i = index"
+        [formGroupName]="i"
+        style="margin-top: 10px;">
+        <div class="col-8">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="text"
+          >
+        </div>
+        <div class="col-3">
+          <input
+            type="checkbox"
+            class="form-control"
+            formControlName="correct"
+          > Is correct?
+        </div>
+        <div class="col-1">
+          <button
+            type="button"
+            (click)="onDeleteAnswer(i)"
+            class="btn btn-danger">X</button>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-12">
+          <button
+            type="button"
+            class="btn btn-success"
+            (click)="onAddAnswer()"
+          >
+            Add answer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

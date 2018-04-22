@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import {SortablejsModule} from 'angular-sortablejs';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SortablejsModule.forRoot({ animation: 150 }),
   ],
   providers: [],
   bootstrap: [AppComponent]
