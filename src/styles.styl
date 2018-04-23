@@ -37,3 +37,48 @@ html {
     }
   }
 }
+
+.slanted {
+  display: block;
+  position: relative;
+  left: -15px;
+  bottom: -15px;
+  padding: 20px 30px 0; /* border space */
+  width: $h3-width;
+  overflow: hidden;
+  z-index: 10;
+
+  h3 {
+    width: $h3-width;
+    height: 45px;
+    margin: 0;
+    color: #fff;
+    background: #8dc26f;
+    z-index: 10;
+  }
+}
+.slanted:before,
+.slanted:after,
+.slanted-top:before {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  border: solid transparent;
+  border-top-color: #8DC26F;
+  border-width: $h3-width 0 0 30px; /* left border (top as max box height) */
+  width: 0;
+  height: 0;
+  content: "\a0";
+}
+.slanted:after {
+  right: 0;
+  left: auto;
+  border-width: $h3-width 30px 0 0; /* right border (top as max box height) */
+}
+.slanted-top:before {
+  position: absolute;
+  top: 0;
+  border-color: transparent;
+  border-left-color: #8DC26F;
+  border-width: 20px 0 0 $h3-width; /* top border width+padding (left as box length) */
+}
