@@ -2,8 +2,8 @@ import {Answer} from './answer.model';
 
 export interface Question {
   id?: number;
-  question: String;
-  hint?: String;
+  question: string;
+  hint?: string;
   answers: Answer[];
   order?: number;
 }

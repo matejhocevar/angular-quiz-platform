@@ -13,7 +13,7 @@ import {Answer} from '../../../../../models/quiz/answer.model';
 export class QuestionItemComponent implements OnInit {
   id: number;
   editMode = false;
-  questionForm = FormGroup;
+  questionForm: FormGroup;
 
   constructor(
     private questionListService: QuestionListService,
@@ -72,7 +72,7 @@ export class QuestionItemComponent implements OnInit {
     let questionText = '';
     let questionHint = '';
     let questionOrder: number;
-    let answers = new FormArray([]);
+    const answers = new FormArray([]);
 
     if (this.editMode) {
       const question: Question = this.questionListService.getQuestion(this.id);
@@ -83,7 +83,7 @@ export class QuestionItemComponent implements OnInit {
       questionOrder = question.order;
 
       if (question['answers']) {
-        for (let answer: Answer of question.answers) {
+        for (const answer of question.answers) {
           answers.push(
             new FormGroup({
               'text': new FormControl(answer.text, Validators.required),
