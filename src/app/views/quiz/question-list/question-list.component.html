@@ -4,19 +4,20 @@
       <div class="col-12">
         <h3>Question list</h3>
         <ul class="list-group" [sortablejs]="questions" [sortablejsOptions]="questionOptions">
-          <a *ngFor="let question of questions"
+          <div *ngFor="let question of questions"
              class="list-group-item"
              [routerLink]="[question.id]"
              routerLinkActive="active">
-            <i class="drag-handle glyphicon glyphicon-menu-hamburger"></i>
-            <span>{{ question.order }}.</span>
+            <i class="drag-handle fui-list"></i>
+            <span><strong>{{ question.order }}.</strong></span>
             <span>{{ question.question }}</span>
-          </a>
+            <i class="remove-handle fui-trash float-right"></i>
+          </div>
         </ul>
         <ul class="list-group">
           <li class="list-group-item new-question">
             <div class="col-12" (click)="onNewQuestion()">
-              New Question
+              <i class="fui-plus" (click)="onDeleteAnswer(question.id)"></i>
             </div>
           </li>
         </ul>

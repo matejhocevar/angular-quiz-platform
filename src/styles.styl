@@ -1,4 +1,5 @@
 @import 'variables.styl';
+@import 'assets/fonts/fonts.styl';
 
 html {
   height: 100%;
@@ -8,6 +9,22 @@ html {
     height: 100%;
     color: $page-color;
     background: $page-bg-color;
+
+    input, textarea {
+      border: none;
+      border: $input-style !important;
+      border-radius: $input-radius !important;
+    }
+    input[type=checkbox], input[type=radio] {
+      display: inline-block;
+      width: auto;
+      margin-right: 10px;
+    }
+
+    input[type=checkbox] + label,
+    input[type=radio] + label {
+      display: inline-block;
+    }
 
     .page {
       display: flex;

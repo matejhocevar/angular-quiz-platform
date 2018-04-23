@@ -3,31 +3,47 @@
 .questions-list {
   overflow-y: auto;
 
-  .list-group-item {
-    * {
-      display: inline-block;
-    }
+  .list-group {
+    background: #fff;
 
-    .drag-handle {
-      display: none;
-      width: 15px;
-      height: 15px;
-      background: red;
-      cursor: grab;
-    }
+    .list-group-item {
+      border-radius: $border-radius;
+      border: none;
+      //border-top: 1px solid #dcdcdc;
+      //border-bottom: 1px solid #dcdcdc;
+      outline: none;
+      cursor: pointer;
 
-    &:hover {
-      .drag-handle {
+      * {
         display: inline-block;
       }
-    }
 
-    &.new-question {
-      color: #fff;
-      background: #5F9EDF;
-      text-align: center;
-      cursor: pointer;
+      &:hover {
+        .drag-handle, .remove-handle {
+          display: inline-block;
+          opacity: 1;
+          position: relative;
+          z-index: 10;
+        }
+      }
+
+      &.new-question {
+        color: $green;
+        background: #fff
+        text-align: center;
+        border: none;
+        cursor: pointer;
+      }
     }
+  }
+
+  .drag-handle {
+    //opacity: 0;
+    cursor: grab;
+  }
+
+  .remove-handle {
+    cursor: pointer;
   }
 }
 

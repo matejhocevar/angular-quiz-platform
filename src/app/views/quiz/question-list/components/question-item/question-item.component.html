@@ -1,32 +1,30 @@
 <h3>{{ editMode ? 'Edit' : 'New' }} Question</h3>
-<form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+<form class="question-form" [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+  <div class="row question-toolbar float-right">
+    <div class="col-12">
+      <button type="submit"
+        [disabled]="!questionForm.valid">
+        <i class="fui-check"></i>
+      </button>
+      <button (click)="onCancel()"><i class="fui-cross"></i></button>
+    </div>
+  </div>
   <div class="row" style="display: none;">
     <div class="col-12">
       <div class="form-group">
         <label for="Id">Id</label>
-        <input
-          type="number"
-          id="id"
-          formControlName="id"
-          class="form-control">
+        <input type="number"
+               id="id"
+               formControlName="id"
+               class="form-control">
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <button
-        type="submit"
-        class="btn btn-success"
-        [disabled]="!questionForm.valid">Save</button>
-      <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
       <div class="form-group">
         <label for="question">Question</label>
-        <textarea
-          type="text"
+        <textarea type="text"
           id="question"
           formControlName="question"
           class="form-control"
@@ -39,8 +37,7 @@
     <div class="col-12">
       <div class="form-group">
         <label for="hint">Hint</label>
-        <input
-          type="text"
+        <input type="text"
           id="hint"
           formControlName="hint"
           class="form-control"
@@ -52,8 +49,7 @@
     <div class="col-12">
       <div class="form-group">
         <label for="order">Order</label>
-        <input
-          type="number"
+        <input type="number"
           id="order"
           formControlName="order"
           class="form-control">
@@ -64,42 +60,32 @@
   <div class="row">
     <div class="col-12" formArrayName="answers">
       <h5>Answers</h5>
-      <div
-        class="row"
+      <div class="row"
         *ngFor="let answerCtrl of questionForm.get('answers').controls; let i = index"
         [formGroupName]="i"
         style="margin-top: 10px;">
         <div class="col-8">
-          <input
-            type="text"
+          <input type="text"
             class="form-control"
             formControlName="text"
           >
         </div>
         <div class="col-3">
-          <input
-            type="checkbox"
+          <input type="checkbox"
             class="form-control"
             formControlName="correct"
-          > Is correct?
+          ><label>Is correct?</label>
         </div>
         <div class="col-1">
-          <button
-            type="button"
-            (click)="onDeleteAnswer(i)"
-            class="btn btn-danger">X</button>
+          <i class="remove-handle fui-cross"
+             (click)="onDeleteAnswer(i)"
+          ></i>
         </div>
       </div>
-      <hr>
       <div class="row">
         <div class="col-12">
-          <button
-            type="button"
-            class="btn btn-success"
-            (click)="onAddAnswer()"
-          >
-            Add answer
-          </button>
+          <i class="fui-plus"
+            (click)="onAddAnswer()"></i>
         </div>
       </div>
     </div>
