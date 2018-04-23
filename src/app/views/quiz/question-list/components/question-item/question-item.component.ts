@@ -68,15 +68,19 @@ export class QuestionItemComponent implements OnInit {
   }
 
   private initForm() {
+    let questionId: number;
     let questionText = '';
     let questionHint = '';
+    let questionOrder: number;
     let answers = new FormArray([]);
 
     if (this.editMode) {
       const question: Question = this.questionListService.getQuestion(this.id);
 
+      questionId = question.id;
       questionText = question.question;
       questionHint = question.hint;
+      questionOrder = question.order;
 
       if (question['answers']) {
         for (let answer: Answer of question.answers) {
@@ -92,8 +96,10 @@ export class QuestionItemComponent implements OnInit {
 
     this.questionForm = new FormGroup(
       {
+        'id': new FormControl(questionId),
         'question': new FormControl(questionText, Validators.required),
         'hint': new FormControl(questionHint),
+        'order': new FormControl(questionOrder),
         'answers': answers
       }
     );

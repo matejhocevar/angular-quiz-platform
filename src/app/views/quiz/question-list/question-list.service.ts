@@ -5,7 +5,7 @@ import {Question} from '../../../models/quiz/question.model';
 
 @Injectable()
 export class QuestionListService {
-  questionItemChanged = new Subject<Question[]>();
+  questionsChanged = new Subject<Question[]>();
 
   private questions: Question[] = [
     {
@@ -36,5 +36,44 @@ export class QuestionListService {
 
   getQuestion(id: number): Question {
     return this.questions.find(question => question.id === id);
+  }
+
+  addQuestion(question: Question) {
+    if (question.id == null) {
+      question.id = this.getNextId();
+    }
+    if (question.order == null) {
+      question.order = this.getNextOrder();
+    }
+
+    this.questions.push(question);
+    this.questionsChanged.next(this.questions.slice());
+  }
+
+  updateQuestion(id: number, newQuestion: Question) {
+    const index = this.questions.findIndex(question => question.id === id);
+    this.questions[index] = newQuestion;
+    this.questionsChanged.next(this.questions.slice());
+  }
+
+  deleteQuestion(id: number) {
+    this.questions = this.questions.filter(question => question.id !== id);
+    this.questionsChanged.next(this.questions.slice());
+  }
+
+  private getNextId(): number {
+    if (this.questions && this.questions.length > 0) {
+      return this.questions[this.questions.length].id++;
+    } else {
+      return 0;
+    }
+  }
+
+  private getNextOrder(): number {
+    if (this.questions && this.questions.length > 0) {
+      return this.questions[this.questions.length].order++;
+    } else {
+      return 0;
+    }
   }
 }
