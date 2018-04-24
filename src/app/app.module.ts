@@ -2,22 +2,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FooterComponent } from './shared/components/footer/footer.component';
 import {SortablejsModule} from 'angular-sortablejs';
+import {SharedModule} from './shared/shared.module';
+import {AuthModule} from './shared/components/auth/auth.module';
+import {AuthRoutingModule} from './shared/components/auth/auth-routing.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SortablejsModule.forRoot({ animation: 150 }),
+    SharedModule,
+    AuthModule,
+    AuthRoutingModule,
+    SortablejsModule.forRoot({ animation: 150 })
   ],
   providers: [],
   bootstrap: [AppComponent]

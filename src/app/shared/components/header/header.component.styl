@@ -1,8 +1,31 @@
 @import '../../../../variables.styl';
 
-.container {
+header {
   order: 0;
   flex: 0 1 $header-height;
   align-self: auto;
   line-height: $header-height;
+
+  .bg {
+    position: absolute;
+    top: -35px;
+    width: 100%;
+    height: 85px;
+    transform: skewY(-1deg);
+    background: #f00;
+    color: $header-color;
+    background: $header-bg;
+  }
+
+  nav {
+    position: relative;
+    top: -20px;
+    padding: 0;
+
+    .nav-item {
+      &.active {
+        background: none;
+      }
+    }
+  }
 }

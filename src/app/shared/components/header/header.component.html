@@ -1,1 +1,79 @@
-<div class="container"></div>
+<header>
+  <div class="bg"></div>
+  <div class="container">
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+      <div class="navbar-brand">ngQuiz</div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/quiz">Start <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/quiz/list">Question List</a>
+          </li>
+          <li appDropdown class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"
+               id="navbarDropdown"
+               role="button"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false"
+               style="cursor: pointer;" >
+              Manage
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" (click)="onSaveData()">Save Data</a>
+              <a class="dropdown-item" (click)="onFetchData()">Fetch Data</a>
+            </div>
+          </li>
+          <ng-template [ngIf]="!authService.isAuthenticated()">
+            <li class="nav-item"><a class="nav-link" routerLink="/signup">Register</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/signin">Login</a></li>
+          </ng-template>
+          <li class="nav-item"
+              *ngIf="authService.isAuthenticated()">
+            <a class="nav-link"
+               (click)="onLogout()"
+               routerLink="/signout">Log out</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!--<nav class="navbar navbar-default">-->
+    <!--<div class="container-fluid">-->
+      <!--<div class="navbar-header">-->
+        <!--<a class="navbar-brand"-->
+          <!--style="cursor: pointer;"-->
+          <!--routerLink="/">ngQuiz</a>-->
+      <!--</div>-->
+
+      <!--<div class="navbar-default">-->
+        <!--<ul class="nav navbar-nav">-->
+          <!--<li routerLinkActive="active"><a routerLink="/quiz">Quiz</a></li>-->
+          <!--<li routerLinkActive="active"><a routerLink="/quiz/list">Question List</a></li>-->
+        <!--</ul>-->
+        <!--<ul class="nav navbar-nav navbar-right">-->
+          <!--<ng-template [ngIf]="!authService.isAuthenticated()">-->
+            <!--<li><a routerLink="/signup">Register</a></li>-->
+            <!--<li><a routerLink="/signin">Login</a></li>-->
+          <!--</ng-template>-->
+          <!--<li class="dropdown" appDropdown *ngIf="authService.isAuthenticated()">-->
+            <!--<a class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>-->
+            <!--<ul class="dropdown-menu">-->
+              <!--<li><a style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>-->
+              <!--<li><a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a></li>-->
+            <!--</ul>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<a-->
+              <!--style="cursor: pointer;"-->
+              <!--(click)="onLogout()"-->
+              <!--*ngIf="authService.isAuthenticated()">Sign Out</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</nav>-->
+</header>
