@@ -10,11 +10,12 @@ html {
     color: $page-color;
     background: $page-bg-color;
 
-    input, textarea {
+    input, textarea, button {
       border: none;
       border: $input-style !important;
       border-radius: $input-radius !important;
     }
+
     input[type=checkbox], input[type=radio] {
       display: inline-block;
       width: auto;
@@ -24,6 +25,22 @@ html {
     input[type=checkbox] + label,
     input[type=radio] + label {
       display: inline-block;
+    }
+
+    .fui-check, .fui-plus {
+      color: $green;
+    }
+
+    .fui-cross, .fui-trash {
+      color: $red;
+    }
+
+    .add-handle {
+      color: $green;
+      background: #fff
+      text-align: center;
+      border: none;
+      cursor: pointer;
     }
 
     .page {

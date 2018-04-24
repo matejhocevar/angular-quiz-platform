@@ -7,7 +7,7 @@
             <h3>Question List</h3>
           </div>
         </div>
-        <ul class="list-group" [sortablejs]="questions" [sortablejsOptions]="questionOptions">
+        <ul class="list-group list" [sortablejs]="questions" [sortablejsOptions]="questionOptions">
           <div *ngFor="let question of questions"
              class="list-group-item"
              [routerLink]="[question.id]"
@@ -15,13 +15,13 @@
             <i class="drag-handle fui-list"></i>
             <span><strong>{{ question.order }}.</strong></span>
             <span>{{ question.question }}</span>
-            <i class="remove-handle fui-trash float-right"></i>
+            <i class="remove-handle fui-trash float-right" (click)="onDeleteAnswer(question.id)"></i>
           </div>
         </ul>
         <ul class="list-group">
-          <li class="list-group-item new-question">
+          <li class="list-group-item add-handle">
             <div class="col-12" (click)="onNewQuestion()">
-              <i class="fui-plus" (click)="onDeleteAnswer(question.id)"></i>
+              <i class="fui-plus"></i>
             </div>
           </li>
         </ul>

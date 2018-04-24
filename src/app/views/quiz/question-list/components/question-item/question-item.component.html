@@ -4,15 +4,6 @@
   </div>
 </div>
 <form class="question-form" [formGroup]="questionForm" (ngSubmit)="onSubmit()">
-  <div class="row question-toolbar float-right">
-    <div class="col-12">
-      <button type="submit"
-        [disabled]="!questionForm.valid">
-        <i class="fui-check"></i>
-      </button>
-      <button (click)="onCancel()"><i class="fui-cross"></i></button>
-    </div>
-  </div>
   <div class="row" style="display: none;">
     <div class="col-12">
       <div class="form-group">
@@ -62,7 +53,7 @@
   </div>
   <div class="row">
     <div class="col-12" formArrayName="answers">
-      <h5>Answers</h5>
+      <h5>Answers <i class="fui-plus add-handle" (click)="onAddAnswer()"></i></h5>
       <div class="row"
         *ngFor="let answerCtrl of questionForm.get('answers').controls; let i = index"
         [formGroupName]="i"
@@ -85,12 +76,14 @@
           ></i>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12">
-          <i class="fui-plus"
-            (click)="onAddAnswer()"></i>
-        </div>
-      </div>
+    </div>
+  </div>
+  <div class="row question-toolbar">
+    <div class="col-6 text-center">
+      <button class="btn btn-success" type="submit" [disabled]="!questionForm.valid">Save</button>
+    </div>
+    <div class="col-6 text-center">
+      <button class="btn btn-default" (click)="onCancel()">Cancel</button>
     </div>
   </div>
 </form>

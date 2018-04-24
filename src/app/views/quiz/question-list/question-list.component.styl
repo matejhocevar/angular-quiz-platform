@@ -4,8 +4,11 @@
   overflow-y: auto;
 
   .list-group {
-    padding-top: 25px;
     background: #fff;
+
+    &.list {
+      padding-top: 25px;
+    }
 
     .list-group-item {
       border-radius: $border-radius;
@@ -27,14 +30,6 @@
           z-index: 10;
         }
       }
-
-      &.new-question {
-        color: $green;
-        background: #fff
-        text-align: center;
-        border: none;
-        cursor: pointer;
-      }
     }
   }
 
@@ -44,6 +39,7 @@
   }
 
   .remove-handle {
+    opacity: 0;
     cursor: pointer;
   }
 }
