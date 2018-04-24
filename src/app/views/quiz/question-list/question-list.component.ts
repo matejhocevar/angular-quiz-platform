@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import {QuestionListService} from './question-list.service';
 import {Question} from '../../../models/quiz/question.model';
+import {FormArray} from '@angular/forms';
 
 @Component({
   selector: 'app-question-list',
@@ -17,7 +18,8 @@ export class QuestionListComponent implements OnInit {
 
   questionOptions: SortablejsOptions = {
     onUpdate: (event) => this.onOrderChanged(event),
-    dragClass: 'drag-handle'
+    dragClass: 'drag-handle',
+    draggable: '.list-group-item'
   };
 
   constructor(private questionListService: QuestionListService,
@@ -39,5 +41,9 @@ export class QuestionListComponent implements OnInit {
 
   onNewQuestion() {
     this.router.navigate(['new'], {relativeTo: this.route});
+  }
+
+  onDeleteAnswer(index: number) {
+    this.questionListService.deleteQuestion(index);
   }
 }

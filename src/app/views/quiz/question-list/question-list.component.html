@@ -13,7 +13,7 @@
              [routerLink]="[question.id]"
              routerLinkActive="active">
             <i class="drag-handle fui-list"></i>
-            <span><strong>{{ question.order }}.</strong></span>
+            <span><strong>{{ question.order / 10}}.</strong></span>
             <span>{{ question.question }}</span>
             <i class="remove-handle fui-trash float-right" (click)="onDeleteAnswer(question.id)"></i>
           </div>

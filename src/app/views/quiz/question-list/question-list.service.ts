@@ -17,7 +17,7 @@ export class QuestionListService {
         {text: '12', isCorrect: true},
         {text: '16', isCorrect: false}
       ],
-      order: 1
+      order: 10
     },
     {
       id: 1,
@@ -26,7 +26,7 @@ export class QuestionListService {
         {text: 'Da', isCorrect: true},
         {text: 'Ne', isCorrect: false}
       ],
-      order: 2
+      order: 20
     }
   ];
 
@@ -63,7 +63,7 @@ export class QuestionListService {
 
   private getNextId(): number {
     if (this.questions && this.questions.length > 0) {
-      return this.questions[this.questions.length].id++;
+      return this.questions[this.questions.length - 1].id++;
     } else {
       return 0;
     }
@@ -71,7 +71,7 @@ export class QuestionListService {
 
   private getNextOrder(): number {
     if (this.questions && this.questions.length > 0) {
-      return this.questions[this.questions.length].order++;
+      return this.questions[this.questions.length - 1].order + 10;
     } else {
       return 0;
     }

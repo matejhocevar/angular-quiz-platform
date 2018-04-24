@@ -51,9 +51,8 @@ export class QuestionItemComponent implements OnInit {
           null,
           Validators.required
         ),
-        'correct': new FormControl(
-          null,
-          [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)]
+        'isCorrect': new FormControl(
+          null
         )
       })
     );
@@ -76,7 +75,7 @@ export class QuestionItemComponent implements OnInit {
 
     if (this.editMode) {
       const question: Question = this.questionListService.getQuestion(this.id);
-
+      console.log('Question: ', question);
       questionId = question.id;
       questionText = question.question;
       questionHint = question.hint;
@@ -87,7 +86,7 @@ export class QuestionItemComponent implements OnInit {
           answers.push(
             new FormGroup({
               'text': new FormControl(answer.text, Validators.required),
-              'correct': new FormControl(answer.isCorrect, Validators.required)
+              'isCorrect': new FormControl(answer.isCorrect)
             })
           );
         }
