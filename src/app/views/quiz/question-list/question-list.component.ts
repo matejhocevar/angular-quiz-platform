@@ -36,7 +36,7 @@ export class QuestionListComponent implements OnInit {
   }
 
   onOrderChanged(event: Event) {
-    console.log(event);
+    this.questionListService.changeQuestionOrder(event['newIndex'], event['oldIndex']);
   }
 
   onNewQuestion() {

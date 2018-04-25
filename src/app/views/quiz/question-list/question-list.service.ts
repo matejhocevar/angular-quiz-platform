@@ -17,7 +17,7 @@ export class QuestionListService {
         {text: '12', isCorrect: true},
         {text: '16', isCorrect: false}
       ],
-      order: 10
+      order: 1
     },
     {
       id: 1,
@@ -26,7 +26,7 @@ export class QuestionListService {
         {text: 'Da', isCorrect: true},
         {text: 'Ne', isCorrect: false}
       ],
-      order: 20
+      order: 2
     }
   ];
 
@@ -61,6 +61,15 @@ export class QuestionListService {
     this.questionsChanged.next(this.questions.slice());
   }
 
+  changeQuestionOrder(idFirst: number, idSecond: number) {
+    const firstIndex = this.questions.findIndex(question => question.id === idFirst);
+    const secondIndex = this.questions.findIndex(question => question.id === idSecond);
+    const tempOrder = this.questions[firstIndex].order;
+    this.questions[firstIndex].order = this.questions[secondIndex].order;
+    this.questions[secondIndex].order = tempOrder;
+    this.questionsChanged.next(this.questions.slice());
+  }
+
   private getNextId(): number {
     if (this.questions && this.questions.length > 0) {
       return this.questions[this.questions.length - 1].id++;
@@ -71,7 +80,7 @@ export class QuestionListService {
 
   private getNextOrder(): number {
     if (this.questions && this.questions.length > 0) {
-      return this.questions[this.questions.length - 1].order + 10;
+      return this.questions[this.questions.length - 1].order + 1;
     } else {
       return 0;
     }

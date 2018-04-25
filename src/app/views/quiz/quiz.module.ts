@@ -10,7 +10,6 @@ import {QuizStartComponent} from './quiz-start/quiz-start.component';
 import {QuizEndComponent} from './quiz-end/quiz-end.component';
 import {QuestionItemComponent} from './question-list/components/question-item/question-item.component';
 import {QuestionComponent} from './question/question.component';
-import {QuestionItemEditComponent} from './question-list/components/question-item-edit/question-item-edit.component';
 import {QuizRoutingModule} from './quiz-routing.module';
 import {QuestionItemStartComponent} from './question-list/components/question-item-start/question-item-start.component';
 import {QuestionListService} from './question-list/question-list.service';
@@ -22,7 +21,6 @@ import {QuestionListService} from './question-list/question-list.service';
     QuestionComponent,
     QuestionListComponent,
     QuestionItemComponent,
-    QuestionItemEditComponent,
     QuizStartComponent,
     QuizEndComponent,
     QuestionItemStartComponent
