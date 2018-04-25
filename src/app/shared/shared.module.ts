@@ -8,8 +8,8 @@ import {AuthGuard} from './components/auth/auth-guard.service';
 import {FooterComponent} from './components/footer/footer.component';
 import {DropdownDirective} from './directives/dropdown.directive';
 import {DataStorageService} from './services/data-storage.service';
-import {AuthRoutingModule} from './components/auth/auth-routing.module';
 import {AuthModule} from './components/auth/auth.module';
+import {AuthRoutingModule} from './components/auth/auth-routing.module';
 
 
 @NgModule({
@@ -19,10 +19,14 @@ import {AuthModule} from './components/auth/auth.module';
     DropdownDirective
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AuthModule,
+    AuthRoutingModule,
   ],
   exports: [
     AppRoutingModule,
+    AuthModule,
+    AuthRoutingModule,
     HeaderComponent,
     FooterComponent,
     DropdownDirective

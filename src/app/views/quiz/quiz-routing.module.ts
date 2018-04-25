@@ -6,11 +6,12 @@ import {QuestionComponent} from './question/question.component';
 import {QuizComponent} from './quiz.component';
 import {QuestionItemComponent} from './question-list/components/question-item/question-item.component';
 import {QuestionItemStartComponent} from './question-list/components/question-item-start/question-item-start.component';
+import {AuthGuard} from '../../shared/components/auth/auth-guard.service';
 
 
 const quizRoutes: Routes = [
   { path: '', component: QuizComponent },
-  { path: 'list', component: QuestionListComponent, children: [
+  { path: 'list', component: QuestionListComponent, canActivate: [AuthGuard], children: [
       { path: '', component: QuestionItemStartComponent},
       { path: 'new', component: QuestionItemComponent },
       { path: ':id', component: QuestionItemComponent }

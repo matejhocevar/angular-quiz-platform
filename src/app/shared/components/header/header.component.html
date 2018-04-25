@@ -8,10 +8,12 @@
           <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="/quiz">Start <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item" routerLinkActive="active">
+          <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
             <a class="nav-link" routerLink="/quiz/list">Question List</a>
           </li>
-          <li appDropdown class="nav-item dropdown">
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li appDropdown class="nav-item dropdown show" *ngIf="authService.isAuthenticated()">
             <a class="nav-link dropdown-toggle"
                id="navbarDropdown"
                role="button"
