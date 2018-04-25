@@ -7,6 +7,7 @@ import {SortablejsModule} from 'angular-sortablejs';
 import {SharedModule} from './shared/shared.module';
 import {AuthModule} from './shared/components/auth/auth.module';
 import {AuthRoutingModule} from './shared/components/auth/auth-routing.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {AuthRoutingModule} from './shared/components/auth/auth-routing.module';
     SharedModule,
     AuthModule,
     AuthRoutingModule,
+    NgbModule.forRoot(),
     SortablejsModule.forRoot({ animation: 150 })
   ],
   providers: [],

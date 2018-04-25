@@ -6,7 +6,6 @@ import {AppRoutingModule} from '../app-routing.module';
 import {AuthService} from './components/auth/auth.service';
 import {AuthGuard} from './components/auth/auth-guard.service';
 import {FooterComponent} from './components/footer/footer.component';
-import {DropdownDirective} from './directives/dropdown.directive';
 import {DataStorageService} from './services/data-storage.service';
 import {AuthModule} from './components/auth/auth.module';
 import {AuthRoutingModule} from './components/auth/auth-routing.module';
@@ -15,8 +14,7 @@ import {AuthRoutingModule} from './components/auth/auth-routing.module';
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent,
-    DropdownDirective
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -28,8 +26,7 @@ import {AuthRoutingModule} from './components/auth/auth-routing.module';
     AuthModule,
     AuthRoutingModule,
     HeaderComponent,
-    FooterComponent,
-    DropdownDirective
+    FooterComponent
   ],
   providers: [
     AuthService,

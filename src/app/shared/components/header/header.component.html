@@ -13,7 +13,7 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-          <li appDropdown class="nav-item dropdown show" *ngIf="authService.isAuthenticated()">
+          <li ngbDropdown class="nav-item dropdown show" *ngIf="authService.isAuthenticated()">
             <a class="nav-link dropdown-toggle"
                id="navbarDropdown"
                role="button"
@@ -42,40 +42,4 @@
       </div>
     </nav>
   </div>
-
-  <!--<nav class="navbar navbar-default">-->
-    <!--<div class="container-fluid">-->
-      <!--<div class="navbar-header">-->
-        <!--<a class="navbar-brand"-->
-          <!--style="cursor: pointer;"-->
-          <!--routerLink="/">ngQuiz</a>-->
-      <!--</div>-->
-
-      <!--<div class="navbar-default">-->
-        <!--<ul class="nav navbar-nav">-->
-          <!--<li routerLinkActive="active"><a routerLink="/quiz">Quiz</a></li>-->
-          <!--<li routerLinkActive="active"><a routerLink="/quiz/list">Question List</a></li>-->
-        <!--</ul>-->
-        <!--<ul class="nav navbar-nav navbar-right">-->
-          <!--<ng-template [ngIf]="!authService.isAuthenticated()">-->
-            <!--<li><a routerLink="/signup">Register</a></li>-->
-            <!--<li><a routerLink="/signin">Login</a></li>-->
-          <!--</ng-template>-->
-          <!--<li class="dropdown" appDropdown *ngIf="authService.isAuthenticated()">-->
-            <!--<a class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>-->
-            <!--<ul class="dropdown-menu">-->
-              <!--<li><a style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>-->
-              <!--<li><a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a></li>-->
-            <!--</ul>-->
-          <!--</li>-->
-          <!--<li>-->
-            <!--<a-->
-              <!--style="cursor: pointer;"-->
-              <!--(click)="onLogout()"-->
-              <!--*ngIf="authService.isAuthenticated()">Sign Out</a>-->
-          <!--</li>-->
-        <!--</ul>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</nav>-->
 </header>
