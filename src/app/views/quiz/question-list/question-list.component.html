@@ -7,24 +7,33 @@
             <h3>Question List</h3>
           </div>
         </div>
-        <ul class="list-group list" [sortablejs]="questions" [sortablejsOptions]="questionOptions">
-          <div *ngFor="let question of questions"
-             class="list-group-item"
-             [routerLink]="[question.id]"
-             routerLinkActive="active">
-            <i class="drag-handle fui-list"></i>
-            <span><strong>{{ question.order}}.</strong></span>
-            <span>{{ question.question }}</span>
-            <i class="remove-handle fui-trash float-right" (click)="onDeleteAnswer(question.id)"></i>
-          </div>
-        </ul>
-        <ul class="list-group">
-          <li class="list-group-item add-handle">
-            <div class="col-12" (click)="onNewQuestion()">
-              <i class="fui-plus"></i>
+        <ng-container *ngIf="questions">
+          <ul class="list-group list" [sortablejs]="questions" [sortablejsOptions]="questionOptions">
+            <div *ngFor="let question of questions"
+                 class="list-group-item"
+                 [routerLink]="[question.id]"
+                 routerLinkActive="active">
+              <i class="drag-handle fui-list"></i>
+              <span><strong>{{ question.order}}.</strong></span>
+              <span>{{ question.question }}</span>
+              <i class="remove-handle fui-trash float-right" (click)="onDeleteAnswer(question.id)"></i>
             </div>
-          </li>
-        </ul>
+          </ul>
+        </ng-container>
+        <ng-container *ngIf="!questions || (questions && questions.length < 1)">
+          <ul class="list-group">
+            <li class="list-group-item text-center">
+              <h5>Loading...</h5>
+            </li>
+          </ul>
+        </ng-container>
+          <ul class="list-group">
+            <li class="list-group-item add-handle">
+              <div class="col-12" (click)="onNewQuestion()">
+                <i class="fui-plus"></i>
+              </div>
+            </li>
+          </ul>
       </div>
     </div>
   </div>
