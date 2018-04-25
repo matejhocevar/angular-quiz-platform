@@ -75,7 +75,6 @@ export class QuestionItemComponent implements OnInit {
 
     if (this.editMode) {
       const question: Question = this.questionListService.getQuestion(this.id);
-      console.log('Question: ', question);
       questionId = question.id;
       questionText = question.question;
       questionHint = question.hint;

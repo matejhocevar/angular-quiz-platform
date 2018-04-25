@@ -10,7 +10,5 @@ import {environment} from '../environments/environment';
 export class AppComponent implements OnInit {
   title = 'app';
 
-  ngOnInit() {
-    firebase.initializeApp(environment.firebase);
-  }
+  ngOnInit() {}
 }
