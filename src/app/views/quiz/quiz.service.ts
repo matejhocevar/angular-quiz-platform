@@ -1,20 +1,23 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 
-import {Question} from '../../../models/quiz/question.model';
-import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
-import {Observable} from 'rxjs/Observable';
+import {Question} from '../../models/quiz/question.model';
+import {AngularFireDatabase} from 'angularfire2/database';
+import {Router} from '@angular/router';
 
 @Injectable()
-export class QuestionListService {
+export class QuizService {
   questionsChanged = new Subject<Question[]>();
-
-  private questions: Question[] = [];
-
+  quizStarted = false;
+  quizEnded = false;
+  public questions: Question[] = [];
   private questionsRef;
 
-  constructor(db: AngularFireDatabase) {
-    this.questionsRef = db.list('questions');
+  constructor(
+    db: AngularFireDatabase,
+    private router: Router
+  ) {
+    this.questionsRef = db.list('questions', ref => ref.orderByChild('order'));
     this.questionsRef.valueChanges().subscribe(questions => {
       this.questions = questions;
       this.questionsChanged.next(this.questions.slice());
@@ -27,6 +30,10 @@ export class QuestionListService {
 
   getQuestion(id: number): Question {
     return this.questions.find(question => question.id === id);
+  }
+
+  getQuestionByOrder(order: number): Question {
+    return this.questions.find(question => question.order === order);
   }
 
   addQuestion(question: Question) {
@@ -83,5 +90,23 @@ export class QuestionListService {
     } else {
       return 1;
     }
+  }
+
+  navigateQuiz() {
+    if (this.questions == null || this.questions.length < 1) {
+      this.quizStarted = false;
+    }
+
+    if (this.quizEnded) {
+      this.router.navigate(['/quiz/end']);
+      return false;
+    }
+
+    if (!this.quizStarted) {
+      this.router.navigate(['/quiz/start']);
+      return false;
+    }
+
+    return true;
   }
 }

@@ -6,7 +6,6 @@ import {AppRoutingModule} from '../app-routing.module';
 import {AuthService} from './components/auth/auth.service';
 import {AuthGuard} from './components/auth/auth-guard.service';
 import {FooterComponent} from './components/footer/footer.component';
-import {DataStorageService} from './services/data-storage.service';
 import {AuthModule} from './components/auth/auth.module';
 import {AuthRoutingModule} from './components/auth/auth-routing.module';
 
@@ -30,8 +29,7 @@ import {AuthRoutingModule} from './components/auth/auth-routing.module';
   ],
   providers: [
     AuthService,
-    AuthGuard,
-    DataStorageService
+    AuthGuard
   ]
 })
 export class SharedModule {}

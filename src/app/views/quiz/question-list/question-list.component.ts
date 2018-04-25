@@ -3,9 +3,8 @@ import {SortablejsOptions} from 'angular-sortablejs';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router} from '@angular/router';
 
-import {QuestionListService} from './question-list.service';
 import {Question} from '../../../models/quiz/question.model';
-import {FormArray} from '@angular/forms';
+import {QuizService} from '../quiz.service';
 
 @Component({
   selector: 'app-question-list',
@@ -22,21 +21,21 @@ export class QuestionListComponent implements OnInit {
     draggable: '.list-group-item'
   };
 
-  constructor(private questionListService: QuestionListService,
+  constructor(private quizService: QuizService,
               private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.subscription = this.questionListService.questionsChanged
+    this.subscription = this.quizService.questionsChanged
       .subscribe(
         (questions: Question[]) => this.questions = questions
       );
 
-    this.questions = this.questionListService.getQuestions();
+    this.questions = this.quizService.getQuestions();
   }
 
   onOrderChanged(event: Event) {
-    this.questionListService.changeQuestionOrder(event['newIndex'], event['oldIndex']);
+    this.quizService.changeQuestionOrder(event['newIndex'], event['oldIndex']);
   }
 
   onNewQuestion() {
@@ -44,6 +43,6 @@ export class QuestionListComponent implements OnInit {
   }
 
   onDeleteAnswer(index: number) {
-    this.questionListService.deleteQuestion(index);
+    this.quizService.deleteQuestion(index);
   }
 }

@@ -1,9 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Question} from '../../../../../models/quiz/question.model';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
-import {QuestionListService} from '../../question-list.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {Answer} from '../../../../../models/quiz/answer.model';
+import {QuizService} from '../../../quiz.service';
 
 @Component({
   selector: 'app-question-item',
@@ -16,7 +15,7 @@ export class QuestionItemComponent implements OnInit {
   questionForm: FormGroup;
 
   constructor(
-    private questionListService: QuestionListService,
+    private quizService: QuizService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -34,9 +33,9 @@ export class QuestionItemComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
-      this.questionListService.updateQuestion(this.id, this.questionForm.value);
+      this.quizService.updateQuestion(this.id, this.questionForm.value);
     } else {
-      this.questionListService.addQuestion(this.questionForm.value);
+      this.quizService.addQuestion(this.questionForm.value);
     }
 
     this.router.navigate(['../'], {relativeTo: this.route});
@@ -74,7 +73,7 @@ export class QuestionItemComponent implements OnInit {
     const answers = new FormArray([]);
 
     if (this.editMode) {
-      const question: Question = this.questionListService.getQuestion(this.id);
+      const question: Question = this.quizService.getQuestion(this.id);
       questionId = question.id;
       questionText = question.question;
       questionHint = question.hint;

@@ -6,7 +6,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/quiz">Start <span class="sr-only">(current)</span></a>
+            <a class="nav-link" routerLink="/quiz/start">Start</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/quiz/1">Question #1</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/quiz/end">End</a>
           </li>
           <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
             <a class="nav-link" routerLink="/quiz/list">Question List</a>

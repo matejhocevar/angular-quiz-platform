@@ -12,7 +12,8 @@ import {QuestionItemComponent} from './question-list/components/question-item/qu
 import {QuestionComponent} from './question/question.component';
 import {QuizRoutingModule} from './quiz-routing.module';
 import {QuestionItemStartComponent} from './question-list/components/question-item-start/question-item-start.component';
-import {QuestionListService} from './question-list/question-list.service';
+import {QuizService} from './quiz.service';
+import {QuizGuard} from './quiz-guard.service';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import {QuestionListService} from './question-list/question-list.service';
     SortablejsModule
   ],
   exports: [],
-  providers: [QuestionListService],
+  providers: [QuizService, QuizGuard],
   bootstrap: []
 })
 export class QuizModule {}

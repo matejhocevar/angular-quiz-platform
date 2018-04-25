@@ -1,3 +1,30 @@
-<p>
-  question works!
-</p>
+<div class="quiz-card col-md-6 mx-auto">
+  <div class="slanted">
+    <div class="slanted-top">
+      <h3>Question #{{ question ? question.order : '?' }}</h3>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header text-center">
+      <h5>{{ question.question }}</h5>
+      <p *ngIf="question.hint" class="question-hint small">(hint: {{ question.hint }})</p>
+    </div>
+    <div class="card-body">
+      <p class="question-correct-answers small text-center">({{ numberOfCorrectAnswers() }} correct answer{{ numberOfCorrectAnswers() > 1 ? 's' : '' }})</p>
+      <div class="row question-answer"
+           *ngFor="let answer of question.answers"
+           style="margin-top: 10px;">
+        <div class="col-1">
+          <input type="checkbox" [checked]="isCorrect">
+        </div>
+        <div class="col-11 text-left">
+          <p>{{ answer.text }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary">Check</button>
+      <button [disabled]="true" class="btn btn-success float-right">Next</button>
+    </div>
+  </div>
+</div>
