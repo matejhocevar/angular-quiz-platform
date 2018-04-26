@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-quiz-end',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quiz-end.component.styl']
 })
 export class QuizEndComponent implements OnInit {
+  quiz = environment.quiz;
 
   constructor() { }
 
