@@ -8,8 +8,13 @@ import {Router} from '@angular/router';
 @Injectable()
 export class QuizService {
   questionsChanged = new Subject<Question[]>();
+
   quizStarted = false;
   quizEnded = false;
+
+  public questionsCompleted: Question[] = [];
+  public questionsTodo: Question[] = [];
+
   public questions: Question[] = [];
   private questionsRef;
 
@@ -108,5 +113,13 @@ export class QuizService {
     }
 
     return true;
+  }
+
+  nextQuestionId(): number {
+    if (this.questionsTodo.length < 1) {
+      this.quizEnded = true;
+      return null;
+    }
+    return this.questionsTodo[1].order;
   }
 }

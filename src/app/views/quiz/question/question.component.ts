@@ -11,6 +11,8 @@ import {Question} from '../../../models/quiz/question.model';
 export class QuestionComponent implements OnInit {
   question: Question;
   id: number;
+  nextId: number;
+  checked = false;
 
   constructor(private quizService: QuizService,
               private route: ActivatedRoute,
@@ -29,5 +31,13 @@ export class QuestionComponent implements OnInit {
 
   numberOfCorrectAnswers() {
     return this.question.answers.filter(answer => answer.isCorrect).length;
+  }
+
+  onCheck() {
+    this.checked = true;
+  }
+
+  onNext() {
+    this.nextId = this.quizService.nextQuestionId();
   }
 }

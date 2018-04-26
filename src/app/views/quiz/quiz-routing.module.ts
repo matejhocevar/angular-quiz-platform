@@ -15,7 +15,6 @@ import {QuizGuard} from './quiz-guard.service';
 const quizRoutes: Routes = [
   { path: '', component: QuizComponent },
   { path: 'start', component: QuizStartComponent },
-  { path: 'next', component: QuestionItemComponent },
   { path: 'end', component: QuizEndComponent },
   { path: 'list', component: QuestionListComponent, canActivate: [AuthGuard], children: [
       { path: '', component: QuestionItemStartComponent},
