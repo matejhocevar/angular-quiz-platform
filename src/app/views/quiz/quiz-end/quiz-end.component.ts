@@ -8,6 +8,15 @@ import {environment} from '../../../../environments/environment';
 })
 export class QuizEndComponent implements OnInit {
   quiz = environment.quiz;
+  quizHeadline = 'Not bad!';
+  quizHeadlines = [
+    { score: 90, headline: 'Excellent!' },
+    { score: 75, headline: 'Great job!' },
+    { score: 65, headline: 'Well done!' },
+    { score: 50, headline: 'Good job!' },
+    { score: 35, headline: 'Not bad!' },
+    { score: 0, headline: 'What do you want me to say...' },
+  ];
 
   constructor() { }
 
