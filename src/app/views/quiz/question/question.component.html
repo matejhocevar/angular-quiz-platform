@@ -10,7 +10,9 @@
       <small *ngIf="question.hint" class="question-hint text-muted">(hint: {{ question.hint }})</small>
     </div>
     <div class="card-body">
-      <small class="question-correct-answers text-muted text-center">({{ numberOfCorrectAnswers() }} correct answer{{ numberOfCorrectAnswers() > 1 ? 's' : '' }})</small>
+      <div class="row">
+        <small class="question-correct-answers text-muted text-center">({{ numOfCorrectAnswers() }} correct answer{{ numOfCorrectAnswers() > 1 ? 's' : '' }})</small>
+      </div>
       <div class="row question-answer"
            *ngFor="let answer of question.answers"
            style="margin-top: 10px;">
@@ -24,7 +26,7 @@
     </div>
     <div class="card-footer">
       <button (click)="onCheck()" class="btn btn-success">Check</button>
-      <button [disabled]="!checked" class="btn btn-primary float-right">Next</button>
+      <button [disabled]="!question.checked" (click)="onNext()" class="btn btn-primary float-right">Next</button>
     </div>
   </div>
 </div>

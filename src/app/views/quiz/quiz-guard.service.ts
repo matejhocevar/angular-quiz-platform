@@ -13,3 +13,15 @@ export class QuizGuard implements CanActivate {
     return this.quizService.navigateQuiz();
   }
 }
+
+@Injectable()
+export class QuizEndGuard implements CanActivate {
+
+  constructor(
+    private quizService: QuizService
+  ) {}
+
+  canActivate() {
+    return this.quizService.quizEnded;
+  }
+}

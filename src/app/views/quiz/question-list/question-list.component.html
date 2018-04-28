@@ -20,10 +20,17 @@
             </div>
           </ul>
         </ng-container>
-        <ng-container *ngIf="!questions || (questions && questions.length < 1)">
+        <ng-container *ngIf="!questions">
           <ul class="list-group">
             <li class="list-group-item text-center">
               <h5>Loading...</h5>
+            </li>
+          </ul>
+        </ng-container>
+        <ng-container *ngIf="questions && questions.length < 1">
+          <ul class="list-group">
+            <li class="list-group-item text-center">
+              <h5>No questions</h5>
             </li>
           </ul>
         </ng-container>

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {SortablejsModule} from 'angular-sortablejs';
 
@@ -13,7 +13,7 @@ import {QuestionComponent} from './question/question.component';
 import {QuizRoutingModule} from './quiz-routing.module';
 import {QuestionItemStartComponent} from './question-list/components/question-item-start/question-item-start.component';
 import {QuizService} from './quiz.service';
-import {QuizGuard} from './quiz-guard.service';
+import {QuizEndGuard, QuizGuard} from './quiz-guard.service';
 
 
 @NgModule({
@@ -28,12 +28,13 @@ import {QuizGuard} from './quiz-guard.service';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     QuizRoutingModule,
     SortablejsModule
   ],
   exports: [],
-  providers: [QuizService, QuizGuard],
+  providers: [QuizService, QuizGuard, QuizEndGuard],
   bootstrap: []
 })
 export class QuizModule {}

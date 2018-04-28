@@ -2,6 +2,9 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {QuizService} from '../quiz.service';
 import {Question} from '../../../models/quiz/question.model';
 import {environment} from '../../../../environments/environment';
+import {Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-quiz-start',
@@ -12,22 +15,37 @@ export class QuizStartComponent implements OnInit {
   quiz = environment.quiz;
   questions: Question[];
 
-  @ViewChild('randomInput') randomInput;
-  @ViewChild('progressInput') progressInput;
+  // @ViewChild('randomInput') randomInput;
+  // @ViewChild('progressInput') progressInput;
 
-  constructor(private quizService: QuizService) { }
+  constructor(
+    private quizService: QuizService,
+    private title: Title
+  ) { }
 
   ngOnInit() {
+    this.title.setTitle('Start Quiz');
     this.questions = this.quizService.questions;
-    this.quizService.quizStarted = true;
+
+    this.quizService.questionsChanged.subscribe(questions => {
+      this.questions = questions;
+    });
   }
 
-  onQuizStart() {
-    this.prepareQuestions(false);
+  onQuizStart(form: NgForm) {
+    const showProgress = form.value ? form.value.showProgress : false;
+    const randomQuestions = form.value ? form.value.randomQuestions : false;
+
+    this.prepareQuestions(randomQuestions);
+
+    this.quizService.quizStarted = true;
+    this.quizService.quizEnded = false;
+
+    this.quizService.moveToNextQuestion();
   }
 
   onQuizResume() {
-    // TODO
+    this.quizService.moveToNextQuestion();
   }
 
   prepareQuestions(random: boolean) {
@@ -40,7 +58,7 @@ export class QuizStartComponent implements OnInit {
 
   shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
+      const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;

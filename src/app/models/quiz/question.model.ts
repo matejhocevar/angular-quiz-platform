@@ -6,4 +6,5 @@ export interface Question {
   hint?: string;
   answers: Answer[];
   order?: number;
+  checked?: boolean;
 }

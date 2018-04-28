@@ -14,8 +14,9 @@ export const environment = {
     messagingSenderId: '<your-messaging-sender-id>'
   },
   quiz: {
-    title: '',
-    description: '',
-    imagePath: ''
+    name: '<your-quiz-short-name>',
+    title: '<you-quiz-title>',
+    description: '<your-quiz-description>',
+    imagePath: '<your-quiz-image-path>'
   }
 };

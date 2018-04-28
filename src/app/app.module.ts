@@ -8,6 +8,7 @@ import {SharedModule} from './shared/shared.module';
 import {AuthModule} from './shared/components/auth/auth.module';
 import {AuthRoutingModule} from './shared/components/auth/auth-routing.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     SharedModule,
     AuthModule,

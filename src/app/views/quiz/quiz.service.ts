@@ -4,6 +4,7 @@ import {Subject} from 'rxjs/Subject';
 import {Question} from '../../models/quiz/question.model';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Injectable()
 export class QuizService {
@@ -14,13 +15,15 @@ export class QuizService {
 
   public questionsCompleted: Question[] = [];
   public questionsTodo: Question[] = [];
+  public currentQuestion: Question;
 
   public questions: Question[] = [];
   private questionsRef;
 
   constructor(
     db: AngularFireDatabase,
-    private router: Router
+    private router: Router,
+    private title: Title
   ) {
     this.questionsRef = db.list('questions', ref => ref.orderByChild('order'));
     this.questionsRef.valueChanges().subscribe(questions => {
@@ -115,11 +118,29 @@ export class QuizService {
     return true;
   }
 
-  nextQuestionId(): number {
-    if (this.questionsTodo.length < 1) {
+  questionAnswered() {
+    this.questionsTodo[0].checked = true;
+    this.questionsCompleted.push(this.questionsTodo[0]);
+    this.questionsTodo = this.questionsTodo.slice(1, this.questionsTodo.length);
+  }
+
+  moveToNextQuestion() {
+    if (this.nextQuestionId() == null) {
       this.quizEnded = true;
+      this.router.navigate(['/quiz/end']);
+      this.title.setTitle(`The End`);
+      return;
+    }
+
+    const nextQuestionId = this.nextQuestionId();
+    this.router.navigate([`/quiz/${+nextQuestionId}`]);
+    this.title.setTitle(`Question #${nextQuestionId}`);
+  }
+
+  nextQuestionId(): number {
+    if (this.questionsTodo.length === 0) {
       return null;
     }
-    return this.questionsTodo[1].order;
+    return this.questionsTodo[0].order;
   }
 }

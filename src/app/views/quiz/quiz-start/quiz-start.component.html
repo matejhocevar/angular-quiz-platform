@@ -1,41 +1,48 @@
-<div class="quiz-card col-md-6 mx-auto">
-  <div class="slanted">
-    <div class="slanted-top">
-      <h3>Start Quiz</h3>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header text-white"
-         [ngStyle]="{'background': quiz.imagePath && quiz.imagePath.length > 0 ? 'url(' + quiz.imagePath + ')' : 'linear-gradient(to top, #30cfd0 0%, #330867 100%)'}">
-      <div class="header">
-        <h3 class="card-title highlighted">{{ quiz.title }}</h3>
-        <p class="card-text highlighted">{{ quiz.description }}</p>
+<form class="quiz-form" (ngSubmit)="onQuizStart(f)" #f="ngForm">
+  <div class="quiz-card col-md-6 mx-auto">
+    <div class="slanted">
+      <div class="slanted-top">
+        <h3>Start Quiz</h3>
       </div>
     </div>
-    <div class="card-body">
-      <div class="container">
-        <p class="card-text">We've prepare <strong>{{ questions.length }}</strong> questions for you! Lets see how many of them you can solve correctly. Enjoy!</p>
-        <div class="quiz-form">
-          <p class="card-text">Quiz options:</p>
-          <div class="row quiz-show-progress">
-            <div class="col-1"><input type="checkbox" #progressInput></div>
-            <div class="col-11 text-left"><p>Track progress</p></div>
-          </div>
-          <div class="row quiz-random">
-            <div class="col-1"><input type="checkbox" #randomInput></div>
-            <div class="col-11 text-left"><p>Random questions</p></div>
-          </div>
+    <div class="card">
+      <div class="card-header text-white"
+           [ngStyle]="{'background': quiz.imagePath && quiz.imagePath.length > 0 ? 'url(' + quiz.imagePath + ')' : 'linear-gradient(to top, #30cfd0 0%, #330867 100%)'}">
+        <div class="header">
+          <h3 class="card-title highlighted">{{ quiz.title }}</h3>
+          <p class="card-text highlighted">{{ quiz.description }}</p>
         </div>
       </div>
-    </div>
-    <div class="card-footer text-center">
-      <ng-container *ngIf="quizStarted">
-        <button class="btn btn-default text-center float-left" (click)="onQuizStart()">Start Again</button>
-        <button class="btn btn-success text-center float-right" (click)="onQuizResume()">Resume Quiz</button>
-      </ng-container>
-      <ng-container *ngIf="!quizStarted">
-        <button class="btn btn-success text-center" (click)="onQuizStart()">Start Quiz</button>
-      </ng-container>
+        <div class="card-body">
+          <div class="container">
+            <ng-container *ngIf="questions">
+              <p class="card-text">We've prepare <strong>{{ questions.length}}</strong> questions for you! Lets see how many of them you can solve correctly. Enjoy!</p>
+            </ng-container>
+            <ng-container *ngIf="!questions">
+              <p class="card-text">Loading questions...</p>
+            </ng-container>
+            <div class="quiz-form">
+              <p class="card-text">Quiz options:</p>
+              <div class="row quiz-show-progress">
+                <div class="col-1"><input type="checkbox" id="showProgress" name="showProgress" ngModel></div>
+                <div class="col-11 text-left"><p>Track progress</p></div>
+              </div>
+              <div class="row quiz-random">
+                <div class="col-1"><input type="checkbox" id="randomQuestions" name="randomQuestions" ngModel></div>
+                <div class="col-11 text-left"><p>Random questions</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-center">
+          <ng-container *ngIf="quizService && quizService.quizStarted">
+            <button class="btn btn-default text-center float-left" type="submit" (click)="onQuizStart()" [disabled]="!questions">Start Again</button>
+            <button class="btn btn-success text-center float-right" type="button" (click)="onQuizResume()" [disabled]="!questions">Resume Quiz</button>
+          </ng-container>
+          <ng-container *ngIf="quizService && !quizService.quizStarted">
+            <button class="btn btn-success text-center" type="submit" [disabled]="!questions">Start Quiz</button>
+          </ng-container>
+        </div>
     </div>
   </div>
-</div>
+</form>

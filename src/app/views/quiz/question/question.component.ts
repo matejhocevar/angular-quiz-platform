@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {QuizService} from '../quiz.service';
 import {Question} from '../../../models/quiz/question.model';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-question',
@@ -11,8 +12,6 @@ import {Question} from '../../../models/quiz/question.model';
 export class QuestionComponent implements OnInit {
   question: Question;
   id: number;
-  nextId: number;
-  checked = false;
 
   constructor(private quizService: QuizService,
               private route: ActivatedRoute,
@@ -29,15 +28,17 @@ export class QuestionComponent implements OnInit {
       });
   }
 
-  numberOfCorrectAnswers() {
+  numOfCorrectAnswers() {
     return this.question.answers.filter(answer => answer.isCorrect).length;
   }
 
   onCheck() {
-    this.checked = true;
+    this.question.checked = true;
+    this.quizService.questionAnswered();
   }
 
   onNext() {
-    this.nextId = this.quizService.nextQuestionId();
+    this.quizService.moveToNextQuestion();
+    return;
   }
 }

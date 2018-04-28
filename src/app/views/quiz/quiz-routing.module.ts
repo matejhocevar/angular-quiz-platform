@@ -9,13 +9,13 @@ import {QuestionItemStartComponent} from './question-list/components/question-it
 import {AuthGuard} from '../../shared/components/auth/auth-guard.service';
 import {QuizStartComponent} from './quiz-start/quiz-start.component';
 import {QuizEndComponent} from './quiz-end/quiz-end.component';
-import {QuizGuard} from './quiz-guard.service';
+import {QuizEndGuard, QuizGuard} from './quiz-guard.service';
 
 
 const quizRoutes: Routes = [
-  { path: '', component: QuizComponent },
+  { path: '', redirectTo: '/quiz/start', pathMatch: 'full' },
   { path: 'start', component: QuizStartComponent },
-  { path: 'end', component: QuizEndComponent },
+  { path: 'end', component: QuizEndComponent, canActivate: [QuizEndGuard] },
   { path: 'list', component: QuestionListComponent, canActivate: [AuthGuard], children: [
       { path: '', component: QuestionItemStartComponent},
       { path: 'new', component: QuestionItemComponent },
