@@ -1,32 +1,39 @@
-<div class="quiz-card col-md-6 mx-auto">
-  <div class="slanted">
-    <div class="slanted-top">
-      <h3>Question #{{ question ? question.order : '?' }}</h3>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header text-center">
-      <h5>{{ question.question }}</h5>
-      <small *ngIf="question.hint" class="question-hint text-muted">(hint: {{ question.hint }})</small>
-    </div>
-    <div class="card-body">
-      <div class="row">
-        <small class="question-correct-answers text-muted text-center">({{ numOfCorrectAnswers() }} correct answer{{ numOfCorrectAnswers() > 1 ? 's' : '' }})</small>
-      </div>
-      <div class="row question-answer"
-           *ngFor="let answer of question.answers"
-           style="margin-top: 10px;">
-        <div class="col-1">
-          <input type="checkbox" [checked]="isCorrect">
-        </div>
-        <div class="col-11 text-left">
-          <p>{{ answer.text }}</p>
-        </div>
+<form class="question-form" [formGroup]="questionForm" (ngSubmit)="onCheck()">
+  <div class="quiz-card col-md-6 mx-auto">
+    <div class="slanted">
+      <div class="slanted-top">
+        <h3>Question #{{ question ? question.order : '?' }}</h3>
       </div>
     </div>
-    <div class="card-footer">
-      <button (click)="onCheck()" class="btn btn-success">Check</button>
-      <button [disabled]="!question.checked" (click)="onNext()" class="btn btn-primary float-right">Next</button>
+    <div class="card">
+      <div class="card-header text-center">
+        <h5>{{ question.question }}</h5>
+        <small *ngIf="question.hint" class="question-hint text-muted">(hint: {{ question.hint }})</small>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <small class="question-correct-answers text-muted text-center">({{ numOfCorrectAnswers() }} correct answer{{ numOfCorrectAnswers() > 1 ? 's' : '' }})</small>
+        </div>
+        <div class="question-answer"
+             formArrayName="answers"
+             *ngFor="let answer of questionForm.get('answers').controls; let i = index;"
+             style="margin-top: 10px;">
+          <div class="row" [formGroupName]="i">
+            <div class="col-1">
+              <input type="checkbox"
+                     class="form-control"
+                     formControlName="answer">
+            </div>
+            <div class="col-11 text-left">
+              <p>{{ answer.value.text }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-success">Check</button>
+        <button [disabled]="!question.checked" (click)="onNext()" class="btn btn-primary float-right">Next</button>
+      </div>
     </div>
   </div>
-</div>
+</form>
