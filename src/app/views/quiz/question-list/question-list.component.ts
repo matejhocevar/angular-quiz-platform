@@ -44,5 +44,6 @@ export class QuestionListComponent implements OnInit {
 
   onDeleteAnswer(index: number) {
     this.quizService.deleteQuestion(index);
+    this.router.navigate(['/quiz/list']);
   }
 }
