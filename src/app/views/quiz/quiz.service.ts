@@ -5,6 +5,7 @@ import {Question, Score} from '../../models/quiz/question.model';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
+import {TranslateService} from '@ngx-translate/core';
 
 @Injectable()
 export class QuizService {
@@ -22,7 +23,8 @@ export class QuizService {
   constructor(
     db: AngularFireDatabase,
     private router: Router,
-    private title: Title
+    private title: Title,
+    private translate: TranslateService
   ) {
     this.questionsRef = db.list('questions', ref => ref.orderByChild('order'));
     this.questionsRef.valueChanges().subscribe(questions => {
@@ -128,13 +130,13 @@ export class QuizService {
     if (this.nextQuestionId() == null) {
       this.quizEnded = true;
       this.router.navigate(['/quiz/end']);
-      this.title.setTitle(`The End`);
+      this.translate.get('quiz.end.title').subscribe(text => this.title.setTitle(text));
       return;
     }
 
     const nextQuestionId = this.nextQuestionId();
     this.router.navigate([`/quiz/${+nextQuestionId}`]);
-    this.title.setTitle(`Question #${nextQuestionId}`);
+    this.translate.get('quiz.question.title', {id: nextQuestionId}).subscribe(text => this.title.setTitle(text));
   }
 
   nextQuestionId(): number {

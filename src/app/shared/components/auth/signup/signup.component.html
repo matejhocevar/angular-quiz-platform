@@ -1,21 +1,21 @@
 <div class="col-md-6 mx-auto">
   <div class="slanted">
     <div class="slanted-top">
-      <h3>Register</h3>
+      <h3>{{ 'auth.signup.title' | translate}}</h3>
     </div>
   </div>
   <div class="card">
     <div class="card-body">
       <form (ngSubmit)="onSignup(f)" #f="ngForm">
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email">{{ 'auth.signup.email' | translate}}</label>
           <input type="text" id="email" name="email" class="form-control" ngModel>
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">{{ 'auth.signup.password' | translate}}</label>
           <input type="password" id="password" name="password" class="form-control" ngModel>
         </div>
-        <button class="btn btn-primary" type="submit">Register</button>
+        <button class="btn btn-primary" type="submit">{{ 'auth.signup.toolbar.register' | translate}}</button>
       </form>
     </div>
   </div>

@@ -1,21 +1,21 @@
 <div class="quiz-card col-md-6 mx-auto">
   <div class="slanted">
     <div class="slanted-top">
-      <h3>The End</h3>
+      <h3>{{ 'quiz.end.title' | translate }}</h3>
     </div>
   </div>
   <div class="card">
     <div class="card-header text-center text-white"
          [ngStyle]="{'background': quiz.imagePath && quiz.imagePath.length > 0 ? 'url(' + quiz.imagePath + ')' : 'linear-gradient(to top, #30cfd0 0%, #330867 100%)'}">
-      <h2 class="highlighted">{{ headline }}</h2>
+      <h2 class="highlighted">{{ headline | translate }}</h2>
     </div>
     <div class="card-body">
-      <p class="card-text">Your score is <strong>{{ points }} / {{ totalPoints}}</strong></p>
-      <p class="card-text">You've answered <strong>{{ scorePct }}%</strong> of the questions correct!</p>
+      <p class="card-text" [innerHTML]="'quiz.end.scoreText' | translate:{points: points, totalPoints: totalPoints}"></p>
+      <p class="card-text" [innerHTML]="'quiz.end.scorePct' | translate:{scorePct: scorePct}"></p>
     </div>
     <div class="card-footer text-center">
       <button routerLink="/quiz/start"
-              class="btn btn-success">Try Again</button>
+              class="btn btn-success">{{ 'quiz.end.toolbar.tryAgain' | translate }}</button>
     </div>
   </div>
 </div>

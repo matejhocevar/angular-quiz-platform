@@ -18,5 +18,6 @@ export const environment = {
     title: '<you-quiz-title>',
     description: '<your-quiz-description>',
     imagePath: '<your-quiz-image-path>'
-  }
+  },
+  language: 'en'
 };

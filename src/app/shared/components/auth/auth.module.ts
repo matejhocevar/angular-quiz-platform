@@ -7,6 +7,7 @@ import {environment} from '../../../../environments/environment';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    TranslateModule
   ]
 })
 export class AuthModule {}

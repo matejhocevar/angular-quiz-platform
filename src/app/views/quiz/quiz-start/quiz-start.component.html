@@ -2,7 +2,7 @@
   <div class="quiz-card col-md-6 mx-auto">
     <div class="slanted">
       <div class="slanted-top">
-        <h3>Start Quiz</h3>
+        <h3 >{{ 'quiz.start.title' | translate }}</h3>
       </div>
     </div>
     <div class="card">
@@ -16,31 +16,31 @@
         <div class="card-body">
           <div class="container">
             <ng-container *ngIf="questions">
-              <p class="card-text">We've prepare <strong>{{ questions.length}}</strong> questions for you! Lets see how many of them you can solve correctly. Enjoy!</p>
+              <p class="card-text" [innerHTML]="'quiz.start.description' | translate:{number: questions.length}"></p>
             </ng-container>
             <ng-container *ngIf="!questions">
-              <p class="card-text">Loading questions...</p>
+              <p class="card-text">{{ 'quiz.start.loading' | translate }}</p>
             </ng-container>
             <div class="quiz-form">
-              <p class="card-text">Quiz options:</p>
+              <p class="card-text">{{ 'quiz.start.options.label' | translate }}</p>
               <div class="row quiz-show-progress">
                 <div class="col-1"><input type="checkbox" id="showProgress" name="showProgress" disabled="disabled" ngModel></div>
-                <div class="col-11 text-left"><p>Track progress</p></div>
+                <div class="col-11 text-left"><p>{{ 'quiz.start.options.trackProgress' | translate }}</p></div>
               </div>
               <div class="row quiz-random">
                 <div class="col-1"><input type="checkbox" id="randomQuestions" name="randomQuestions" ngModel></div>
-                <div class="col-11 text-left"><p>Random questions</p></div>
+                <div class="col-11 text-left"><p>{{ 'quiz.start.options.randomQuestions' | translate }}</p></div>
               </div>
             </div>
           </div>
         </div>
         <div class="card-footer text-center">
           <ng-container *ngIf="quizService && quizService.quizStarted">
-            <button class="btn btn-default text-center float-left" type="submit" (click)="onQuizStart()" [disabled]="!questions">Start Again</button>
-            <button class="btn btn-success text-center float-right" type="button" (click)="onQuizResume()" [disabled]="!questions">Resume Quiz</button>
+            <button class="btn btn-default text-center float-left" type="submit" (click)="onQuizStart()" [disabled]="!questions">{{ 'quiz.start.toolbar.startAgain' | translate }}</button>
+            <button class="btn btn-success text-center float-right" type="button" (click)="onQuizResume()" [disabled]="!questions">{{ 'quiz.start.toolbar.resumeQuiz' | translate }}</button>
           </ng-container>
           <ng-container *ngIf="quizService && !quizService.quizStarted">
-            <button class="btn btn-success text-center" type="submit" [disabled]="!questions">Start Quiz</button>
+            <button class="btn btn-success text-center" type="submit" [disabled]="!questions">{{ 'quiz.start.toolbar.startQuiz' | translate }}</button>
           </ng-container>
         </div>
     </div>

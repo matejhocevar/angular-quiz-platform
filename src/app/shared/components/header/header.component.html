@@ -2,11 +2,11 @@
   <div class="bg"></div>
   <div class="container">
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
-      <div class="navbar-brand">ngQuiz</div>
+      <div class="navbar-brand">{{ 'name' | translate }}</div>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/quiz/start">Start</a>
+            <a class="nav-link" routerLink="/quiz/start">{{ 'navbar.start' | translate }}</a>
           </li>
           <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="/quiz/1">Question #1</a>
@@ -15,19 +15,19 @@
             <a class="nav-link" routerLink="/quiz/end">End</a>
           </li>
           <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
-            <a class="nav-link" routerLink="/quiz/list">Question List</a>
+            <a class="nav-link" routerLink="/quiz/list">{{ 'navbar.questionList' | translate }}</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
           <ng-template [ngIf]="!authService.isAuthenticated()">
-            <li class="nav-item"><a class="nav-link" routerLink="/signup">Register</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/signin">Login</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/signup">{{ 'navbar.register' | translate }}</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/signin">{{ 'navbar.login' | translate }}</a></li>
           </ng-template>
           <li class="nav-item"
               *ngIf="authService.isAuthenticated()">
             <a class="nav-link"
                (click)="onLogout()"
-               routerLink="/signout">Log out</a>
+               routerLink="/signout">{{ 'navbar.logOut' | translate }}</a>
           </li>
         </ul>
       </div>

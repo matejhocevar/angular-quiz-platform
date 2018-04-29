@@ -14,6 +14,7 @@ import {QuizRoutingModule} from './quiz-routing.module';
 import {QuestionItemStartComponent} from './question-list/components/question-item-start/question-item-start.component';
 import {QuizService} from './quiz.service';
 import {QuizEndGuard, QuizGuard} from './quiz-guard.service';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {QuizEndGuard, QuizGuard} from './quiz-guard.service';
     FormsModule,
     ReactiveFormsModule,
     QuizRoutingModule,
-    SortablejsModule
+    SortablejsModule,
+    TranslateModule
   ],
   exports: [],
   providers: [QuizService, QuizGuard, QuizEndGuard],

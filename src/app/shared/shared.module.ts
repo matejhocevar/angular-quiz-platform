@@ -8,6 +8,7 @@ import {AuthGuard} from './components/auth/auth-guard.service';
 import {FooterComponent} from './components/footer/footer.component';
 import {AuthModule} from './components/auth/auth.module';
 import {AuthRoutingModule} from './components/auth/auth-routing.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {AuthRoutingModule} from './components/auth/auth-routing.module';
     CommonModule,
     AuthModule,
     AuthRoutingModule,
+    TranslateModule
   ],
   exports: [
     AppRoutingModule,

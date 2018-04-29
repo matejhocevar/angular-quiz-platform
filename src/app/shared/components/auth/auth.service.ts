@@ -45,7 +45,6 @@ export class AuthService {
   }
 
   logout() {
-    console.log('Token: ', this.token);
     this.af.auth.signOut();
     this.token = null;
   }

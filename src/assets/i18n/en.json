@@ -1,0 +1,91 @@
+{
+  "name": "Quiz",
+  "quiz": {
+    "start": {
+      "title": "Start Quiz",
+      "description": "We've prepare <strong>{{ number }}</strong> questions for you! Lets see how many of them you can solve correctly. Enjoy!",
+      "loading": "Loading questions...",
+      "options": {
+        "label": "Quiz options:",
+        "trackProgress": "Track progress",
+        "randomQuestions": "Random questions"
+      },
+      "toolbar": {
+        "startQuiz": "Start Quiz",
+        "startAgain": "Start Again",
+        "resumeQuiz": "Resume Quiz"
+      }
+    },
+    "question": {
+      "title": "Question #{{ id }}",
+      "hint": "(hint: {{ hint }})",
+      "correct": "({{ number }} correct answer{{ postfix }})",
+      "toolbar": {
+        "check": "Check",
+        "next": "Next"
+      }
+    },
+    "end": {
+      "title": "The End",
+      "headlines": {
+        "90": "Excellent!",
+        "75": "Great job!",
+        "65": "Well done!",
+        "50": "Good job!",
+        "35": "Not bad!",
+        "0": "What do you want me to say..."
+      },
+      "scoreText": "Your score is <strong>{{ points }}</strong> / <strong>{{ totalPoints}}</strong>",
+      "scorePct": "You've answered <strong>{{ scorePct }}%</strong> of the questions correct!",
+      "toolbar": {
+        "tryAgain": "Try Again"
+      }
+    },
+    "questionList": {
+      "title": "Question List",
+      "loading": "Loading...",
+      "noQuestions": "No Questions",
+      "selectQuestion": "Select a Question",
+      "item": {
+        "title": "{{ mode }} Question",
+        "id": "Id",
+        "question": "Question",
+        "hint": "Hint",
+        "order": "Order",
+        "answers": {
+          "title": "Answers",
+          "isCorrect": "Is correct?"
+        },
+        "toolbar": {
+          "save": "Save",
+          "cancel": "Cancel"
+        }
+      }
+    }
+  },
+  "auth": {
+    "signup": {
+      "title": "Register",
+      "email": "Email",
+      "password": "Password",
+      "toolbar": {
+        "register": "Register"
+      }
+    },
+    "signin": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "toolbar": {
+        "login": "Login"
+      }
+    }
+  },
+  "navbar": {
+    "start": "Start",
+    "questionList": "Question List",
+    "login": "Login",
+    "register": "Register",
+    "logOut": "Log Out"
+  }
+}

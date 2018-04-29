@@ -4,6 +4,7 @@ import {Question} from '../../../models/quiz/question.model';
 import {environment} from '../../../../environments/environment';
 import {NgForm} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-quiz-start',
@@ -16,11 +17,12 @@ export class QuizStartComponent implements OnInit {
 
   constructor(
     private quizService: QuizService,
-    private title: Title
+    private title: Title,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {
-    this.title.setTitle('Start Quiz');
+    this.translate.get('quiz.start.title').subscribe(text => this.title.setTitle(text));
     this.questions = this.quizService.questions;
 
     if (this.quizService.quizEnded) {

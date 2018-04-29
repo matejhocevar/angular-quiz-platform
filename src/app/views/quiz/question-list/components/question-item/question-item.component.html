@@ -1,13 +1,13 @@
 <div class="slanted">
   <div class="slanted-top">
-    <h3>{{ editMode ? 'Edit' : 'New' }} Question</h3>
+    <h3>{{ 'quiz.questionList.item.title' | translate:{mode: editMode ? 'Edit' : 'New'} }}</h3>
   </div>
 </div>
 <form class="question-form" [formGroup]="questionForm" (ngSubmit)="onSubmit()">
   <div class="row" style="display: none;">
     <div class="col-12">
       <div class="form-group">
-        <label for="Id">Id</label>
+        <label for="Id">{{ 'quiz.questionList.item.id' | translate }}</label>
         <input type="number"
                id="id"
                formControlName="id"
@@ -18,7 +18,7 @@
   <div class="row">
     <div class="col-12">
       <div class="form-group">
-        <label for="question">Question</label>
+        <label for="question">{{ 'quiz.questionList.item.question' | translate }}</label>
         <textarea type="text"
           id="question"
           formControlName="question"
@@ -31,7 +31,7 @@
   <div class="row">
     <div class="col-12">
       <div class="form-group">
-        <label for="hint">Hint</label>
+        <label for="hint">{{ 'quiz.questionList.item.hint' | translate }}</label>
         <input type="text"
           id="hint"
           formControlName="hint"
@@ -43,7 +43,7 @@
   <div class="row" style="display: none;">
     <div class="col-12">
       <div class="form-group">
-        <label for="order">Order</label>
+        <label for="order">{{ 'quiz.questionList.item.order' | translate }}</label>
         <input type="number"
           id="order"
           formControlName="order"
@@ -53,7 +53,7 @@
   </div>
   <div class="row">
     <div class="col-12" formArrayName="answers">
-      <h5>Answers <i class="fui-plus add-handle" (click)="onAddAnswer()"></i></h5>
+      <h5>{{ 'quiz.questionList.item.answers.title' | translate }} <i class="fui-plus add-handle" (click)="onAddAnswer()"></i></h5>
       <div class="row"
         *ngFor="let answerCtrl of questionForm.get('answers').controls; let i = index"
         [formGroupName]="i"
@@ -61,14 +61,13 @@
         <div class="col-8">
           <input type="text"
             class="form-control"
-            formControlName="text"
-          >
+            formControlName="text">
         </div>
         <div class="col-3">
           <input type="checkbox"
             class="form-control"
             formControlName="isCorrect"
-          ><label>Is correct?</label>
+          ><label>{{ 'quiz.questionList.item.answers.isCorrect' | translate }}</label>
         </div>
         <div class="col-1">
           <i class="remove-handle fui-cross"
@@ -80,10 +79,10 @@
   </div>
   <div class="row question-toolbar">
     <div class="col-6 text-center">
-      <button class="btn btn-success" type="submit" [disabled]="!questionForm.valid">Save</button>
+      <button class="btn btn-success" type="submit" [disabled]="!questionForm.valid">{{ 'quiz.questionList.item.toolbar.save' | translate }}</button>
     </div>
     <div class="col-6 text-center">
-      <button class="btn btn-default" (click)="onCancel()">Cancel</button>
+      <button class="btn btn-default" (click)="onCancel()">{{ 'quiz.questionList.item.toolbar.cancel' | translate }}</button>
     </div>
   </div>
 </form>

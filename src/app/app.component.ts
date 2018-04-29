@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import * as firebase from 'firebase';
 import {environment} from '../environments/environment';
 import {Title} from '@angular/platform-browser';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +9,15 @@ import {Title} from '@angular/platform-browser';
   styleUrls: ['./app.component.styl']
 })
 export class AppComponent implements OnInit {
-  title = environment.quiz.name;
-
-  constructor(private titleService: Title) {}
+  constructor(
+    private titleService: Title,
+    private translate: TranslateService
+  ) {
+    this.translate.setDefaultLang('en');
+    this.translate.use(environment.language);
+  }
 
   ngOnInit() {
-    this.titleService.setTitle(this.title);
+    this.translate.get('name').subscribe(text => {console.log(text); return this.titleService.setTitle(text);});
   }
 }
