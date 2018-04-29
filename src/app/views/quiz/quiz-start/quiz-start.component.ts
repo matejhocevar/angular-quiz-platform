@@ -23,6 +23,11 @@ export class QuizStartComponent implements OnInit {
     this.title.setTitle('Start Quiz');
     this.questions = this.quizService.questions;
 
+    if (this.quizService.quizEnded) {
+      this.quizService.quizStarted = false;
+      this.quizService.quizEnded = false;
+    }
+
     this.quizService.questionsChanged.subscribe(questions => {
       this.questions = questions;
     });
@@ -45,6 +50,8 @@ export class QuizStartComponent implements OnInit {
   }
 
   prepareQuestions(random: boolean) {
+    this.quizService.questionsCompleted = [];
+
     if (random) {
       this.quizService.questionsTodo = this.shuffle(this.questions.slice());
     } else {

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ActivatedRoute, Params} from '@angular/router';
 import {QuizService} from '../quiz.service';
 import {Question, Score} from '../../../models/quiz/question.model';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {Answer} from '../../../models/quiz/answer.model';
 
 @Component({
@@ -21,13 +21,11 @@ export class QuestionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.id = +this.route.snapshot.params['id'];
-    this.question = this.quizService.getQuestionByOrder(this.id);
-
     this.route.params
       .subscribe((params: Params) => {
         this.id = +params['id'];
         this.question = this.quizService.getQuestionByOrder(this.id);
+        this.question.checked = false;
         this.initForm();
       });
   }
