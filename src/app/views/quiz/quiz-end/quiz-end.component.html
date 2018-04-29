@@ -7,11 +7,11 @@
   <div class="card">
     <div class="card-header text-center text-white"
          [ngStyle]="{'background': quiz.imagePath && quiz.imagePath.length > 0 ? 'url(' + quiz.imagePath + ')' : 'linear-gradient(to top, #30cfd0 0%, #330867 100%)'}">
-      <h2 class="highlighted">{{ quizHeadline }}</h2>
+      <h2 class="highlighted">{{ headline }}</h2>
     </div>
     <div class="card-body">
-      <p class="card-text">Your score is <strong>30 / 32</strong></p>
-      <p class="card-text">You've answered <strong>85%</strong> of the questions correct!</p>
+      <p class="card-text">Your score is <strong>{{ points }} / {{ totalPoints}}</strong></p>
+      <p class="card-text">You've answered <strong>{{ scorePct }}%</strong> of the questions correct!</p>
     </div>
     <div class="card-footer text-center">
       <button routerLink="/quiz/start"

@@ -7,4 +7,10 @@ export interface Question {
   answers: Answer[];
   order?: number;
   checked?: boolean;
+  score?: Score;
+}
+
+export interface Score {
+  points: number;
+  totalPoints: number;
 }

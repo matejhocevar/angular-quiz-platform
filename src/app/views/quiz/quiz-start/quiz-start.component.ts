@@ -1,8 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {QuizService} from '../quiz.service';
 import {Question} from '../../../models/quiz/question.model';
 import {environment} from '../../../../environments/environment';
-import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
 
@@ -14,9 +13,6 @@ import {Title} from '@angular/platform-browser';
 export class QuizStartComponent implements OnInit {
   quiz = environment.quiz;
   questions: Question[];
-
-  // @ViewChild('randomInput') randomInput;
-  // @ViewChild('progressInput') progressInput;
 
   constructor(
     private quizService: QuizService,

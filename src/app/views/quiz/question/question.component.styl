@@ -1,4 +1,5 @@
 @import '../../../../variables.styl';
+
 .card-header {
   h5 {
     margin-top: 20px;
@@ -13,5 +14,16 @@
 
   .question-answer {
     height: 25px;
+
+    .answer {
+      label, input {
+        cursor: pointer;
+      }
+
+      .answer-label.correct {
+        font-weight: 600;
+        color: $green;
+      }
+    }
   }
 }

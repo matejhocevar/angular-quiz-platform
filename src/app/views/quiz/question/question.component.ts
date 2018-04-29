@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {QuizService} from '../quiz.service';
-import {Question} from '../../../models/quiz/question.model';
+import {Question, Score} from '../../../models/quiz/question.model';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Answer} from '../../../models/quiz/answer.model';
 
 @Component({
   selector: 'app-question',
@@ -51,12 +52,37 @@ export class QuestionComponent implements OnInit {
   }
 
   onCheck() {
+    const score: Score = this.calculateScore(this.questionForm.value.answers);
     this.question.checked = true;
-    this.quizService.questionAnswered();
+    this.quizService.questionAnswered(score);
+    this.questionForm.disable();
   }
 
   onNext() {
     this.quizService.moveToNextQuestion();
-    return;
+  }
+
+  calculateScore(answersList: Answer[]): Score {
+    const score = {} as Score;
+    score.points = 0;
+    score.totalPoints = this.numOfCorrectAnswers();
+
+    const answered = answersList.filter(answer => answer.answer);
+    if (answered.length <= this.numOfCorrectAnswers()) {
+      answersList.map(answer => {
+        if (answer.answer && answer.isCorrect) {
+          score.points++;
+        }
+      });
+    }
+
+    return score;
+  }
+
+  getAnswerStatus(answer: FormControl): string {
+    if (answer.value.answer === true) {
+      return answer.value.isCorrect ? 'correct' : 'incorrect';
+    }
+    return null;
   }
 }

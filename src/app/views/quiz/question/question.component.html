@@ -18,20 +18,35 @@
              formArrayName="answers"
              *ngFor="let answer of questionForm.get('answers').controls; let i = index;"
              style="margin-top: 10px;">
-          <div class="row" [formGroupName]="i">
+          <div class="row answer"
+               [formGroupName]="i">
+            <div class="col-1">
+              <ng-container *ngIf="question.checked && getAnswerStatus(answer) === 'correct'">
+                <i class="correct fui-check"></i>
+              </ng-container>
+              <ng-container *ngIf="question.checked && getAnswerStatus(answer) === 'incorrect'">
+                <i class="incorrect fui-cross"></i>
+              </ng-container>
+            </div>
             <div class="col-1">
               <input type="checkbox"
                      class="form-control"
-                     formControlName="answer">
+                     formControlName="answer"
+                     name="answer-{{i}}"
+                     id="answer-{{i}}">
             </div>
-            <div class="col-11 text-left">
-              <p>{{ answer.value.text }}</p>
+            <div class="col-10 text-left">
+                <label for="answer-{{i}}"
+                       class="answer-label"
+                       [ngClass]="question.checked && answer.value.isCorrect ? 'correct' : ''">
+                  {{ answer.value.text }}
+                </label>
             </div>
           </div>
         </div>
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn btn-success">Check</button>
+        <button [disabled]="question.checked" type="submit" class="btn btn-success">Check</button>
         <button [disabled]="!question.checked" (click)="onNext()" class="btn btn-primary float-right">Next</button>
       </div>
     </div>

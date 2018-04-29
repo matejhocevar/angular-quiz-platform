@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 
-import {Question} from '../../models/quiz/question.model';
+import {Question, Score} from '../../models/quiz/question.model';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
@@ -15,7 +15,6 @@ export class QuizService {
 
   public questionsCompleted: Question[] = [];
   public questionsTodo: Question[] = [];
-  public currentQuestion: Question;
 
   public questions: Question[] = [];
   private questionsRef;
@@ -118,8 +117,9 @@ export class QuizService {
     return true;
   }
 
-  questionAnswered() {
+  questionAnswered(score: Score) {
     this.questionsTodo[0].checked = true;
+    this.questionsTodo[0].score = score;
     this.questionsCompleted.push(this.questionsTodo[0]);
     this.questionsTodo = this.questionsTodo.slice(1, this.questionsTodo.length);
   }
@@ -142,5 +142,17 @@ export class QuizService {
       return null;
     }
     return this.questionsTodo[0].order;
+  }
+
+  getTotalScore(): [number, number] {
+    let points = 0;
+    let totalPoints = 0;
+
+    this.questionsCompleted.map(question => {
+      points += question.score.points;
+      totalPoints += question.score.totalPoints;
+    });
+
+    return [points, totalPoints];
   }
 }
