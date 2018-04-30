@@ -1,91 +1,100 @@
 {
-  "name": "Quiz",
+  "name": "Kviz",
   "quiz": {
     "start": {
-      "title": "Start Quiz",
-      "description": "We've prepare <strong>{{ number }}</strong> questions for you! Lets see how many of them you can solve correctly. Enjoy!",
-      "loading": "Loading questions...",
+      "title": "Začni kviz",
+      "description": "Zate smo pripravili <strong>{{ number }}</strong> vprašanj! Preiskusi svoje znanje, da ugotoviš koliko jih lahko pravilno rešiš. Uživaj!",
+      "loading": "Nalaganje vprašanj...",
       "options": {
-        "label": "Quiz options:",
-        "trackProgress": "Track progress",
-        "randomQuestions": "Random questions"
+        "label": "Možnosti kviza:",
+        "trackProgress": "Beleži napredek",
+        "randomQuestions": "Naključna vprašanja"
       },
       "toolbar": {
-        "startQuiz": "Start Quiz",
-        "startAgain": "Start Again",
-        "resumeQuiz": "Resume Quiz"
+        "startQuiz": "Začni kviz",
+        "startAgain": "Začni od začetka",
+        "resumeQuiz": "Nadaljuj kviz"
       }
     },
     "question": {
-      "title": "Question #{{ id }}",
-      "hint": "(hint: {{ hint }})",
-      "correct": "({{ number }} correct answer{{ postfix }})",
+      "title": "Vprašanje #{{ id }}",
+      "hint": "(namig: {{ hint }})",
+      "correct": {
+        "0": "({{ number }} pravnilnih odgovorov)",
+        "1": "({{ number }} pravilen odgovor)",
+        "2": "({{ number }} pravilna odgovora)",
+        "34": "({{ number }} pravnilni odgovori)",
+        "plural": "({{ number }} pravnilnih odgovorov)"
+      },
       "toolbar": {
-        "check": "Check",
-        "next": "Next"
+        "check": "Preveri",
+        "next": "Naslednje vprašanje"
       }
     },
     "end": {
-      "title": "The End",
+      "title": "Konec",
       "headlines": {
-        "90": "Excellent!",
-        "75": "Great job!",
-        "65": "Well done!",
-        "50": "Good job!",
-        "35": "Not bad!",
-        "0": "What do you want me to say..."
+        "90": "Odlično!",
+        "75": "Zelo dobro!",
+        "65": "Prav dobro!",
+        "50": "Dobro!",
+        "35": "Ni slabo!",
+        "0": "Kaj naj rečem..."
       },
-      "scoreText": "Your score is <strong>{{ points }}</strong> / <strong>{{ totalPoints}}</strong>",
-      "scorePct": "You've answered <strong>{{ scorePct }}%</strong> of the questions correct!",
+      "scoreText": "Tvoj rezultat je <strong>{{ points }}</strong> / <strong>{{ totalPoints}}</strong>",
+      "scorePct": "Odgovoril/a si na <strong>{{ scorePct }}%</strong> vprašanj prav!",
       "toolbar": {
-        "tryAgain": "Try Again"
+        "tryAgain": "Poskusi ponovno"
       }
     },
     "questionList": {
-      "title": "Question List",
-      "loading": "Loading...",
-      "noQuestions": "No Questions",
-      "selectQuestion": "Select a Question",
+      "title": "Seznam vprašanj",
+      "loading": "Nalaganje vprašanj...",
+      "noQuestions": "Ni vprašanj",
+      "selectQuestion": "Izberi vprašanje",
       "item": {
-        "title": "{{ mode }} Question",
+        "title": {
+          "new": "Novo vprašanje",
+          "edit": "Uredi vprašanje"
+        },
         "id": "Id",
-        "question": "Question",
-        "hint": "Hint",
-        "order": "Order",
+        "question": "Vprašanje",
+        "hint": "Namig",
+        "order": "Vrstni red",
         "answers": {
-          "title": "Answers",
-          "isCorrect": "Is correct?"
+          "title": "Odgovori",
+          "isCorrect": "Je pravilen?"
         },
         "toolbar": {
-          "save": "Save",
-          "cancel": "Cancel"
+          "save": "Shrani",
+          "cancel": "Prekliči"
         }
       }
     }
   },
   "auth": {
     "signup": {
-      "title": "Register",
+      "title": "Registracija",
       "email": "Email",
-      "password": "Password",
+      "password": "Geslo",
       "toolbar": {
-        "register": "Register"
+        "register": "Registriraj se"
       }
     },
     "signin": {
-      "title": "Login",
+      "title": "Prijava",
       "email": "Email",
-      "password": "Password",
+      "password": "Geslo",
       "toolbar": {
-        "login": "Login"
+        "login": "Prijavi se"
       }
     }
   },
   "navbar": {
-    "start": "Start",
-    "questionList": "Question List",
-    "login": "Login",
-    "register": "Register",
-    "logOut": "Log Out"
+    "start": "Začni",
+    "questionList": "Seznam vprašanj",
+    "login": "Prijava",
+    "register": "Registracija",
+    "logOut": "Odjava"
   }
 }

@@ -19,7 +19,13 @@
     "question": {
       "title": "Question #{{ id }}",
       "hint": "(hint: {{ hint }})",
-      "correct": "({{ number }} correct answer{{ postfix }})",
+      "correct": {
+        "0": "({{ number }} correct answers)",
+        "1": "({{ number }} correct answer)",
+        "2": "({{ number }} correct answers)",
+        "34": "({{ number }} correct answers)",
+        "plural": "({{ number }} correct answers)"
+      },
       "toolbar": {
         "check": "Check",
         "next": "Next"
@@ -47,7 +53,10 @@
       "noQuestions": "No Questions",
       "selectQuestion": "Select a Question",
       "item": {
-        "title": "{{ mode }} Question",
+        "title": {
+          "new": "New Question",
+          "edit": "Edit Question"
+        },
         "id": "Id",
         "question": "Question",
         "hint": "Hint",

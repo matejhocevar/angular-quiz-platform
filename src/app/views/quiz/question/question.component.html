@@ -12,7 +12,7 @@
       </div>
       <div class="card-body">
         <div class="row">
-          <small class="question-correct-answers text-muted text-center"> {{ 'quiz.question.correct' | translate:{number: numOfCorrectAnswers(), postfix: numOfCorrectAnswers() > 1 ? 's' : ''} }}</small>
+          <small class="question-correct-answers text-muted text-center"> {{ getNumOfCorrectPlural(numOfCorrectAnswers()) | translate:{number: numOfCorrectAnswers()} }}</small>
         </div>
         <div class="question-answer"
              formArrayName="answers"

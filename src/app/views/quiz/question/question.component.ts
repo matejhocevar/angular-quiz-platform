@@ -83,4 +83,18 @@ export class QuestionComponent implements OnInit {
     }
     return null;
   }
+
+  getNumOfCorrectPlural(number: number) {
+    if (number < 1) {
+      return 'quiz.question.correct.0';
+    } else if (number === 1) {
+      return 'quiz.question.correct.1';
+    } else if (number === 2) {
+      return 'quiz.question.correct.2';
+    } else if (number === 3 || number === 4) {
+      return 'quiz.question.correct.34';
+    } else {
+      return 'quiz.question.correct.plural';
+    }
+  }
 }
