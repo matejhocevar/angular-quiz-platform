@@ -15,6 +15,7 @@ import {QuestionItemStartComponent} from './question-list/components/question-it
 import {QuizService} from './quiz.service';
 import {QuizEndGuard, QuizGuard} from './quiz-guard.service';
 import {TranslateModule} from '@ngx-translate/core';
+import {SharedModule} from '../../shared/shared.module';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import {TranslateModule} from '@ngx-translate/core';
   imports: [
     CommonModule,
     FormsModule,
+    SharedModule,
     ReactiveFormsModule,
     QuizRoutingModule,
     SortablejsModule,

@@ -1,9 +1,5 @@
 <div class="col-md-6 mx-auto">
-  <div class="slanted">
-    <div class="slanted-top">
-      <h3>{{ 'auth.signin.title' | translate}}</h3>
-    </div>
-  </div>
+  <app-slanted><h3>{{ 'auth.signin.title' | translate}}</h3></app-slanted>
   <div class="card">
     <div class="card-body">
       <form (ngSubmit)="onSignin(f)" #f="ngForm">

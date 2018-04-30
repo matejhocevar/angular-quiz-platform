@@ -1,10 +1,6 @@
 <form class="quiz-form" (ngSubmit)="onQuizStart(f)" #f="ngForm">
   <div class="quiz-card col-md-6 mx-auto">
-    <div class="slanted">
-      <div class="slanted-top">
-        <h3 >{{ 'quiz.start.title' | translate }}</h3>
-      </div>
-    </div>
+    <app-slanted><h3 >{{ 'quiz.start.title' | translate }}</h3></app-slanted>
     <div class="card">
       <div class="card-header text-white"
            [ngStyle]="{'background': quiz.imagePath && quiz.imagePath.length > 0 ? 'url(' + quiz.imagePath + ')' : 'linear-gradient(to top, #30cfd0 0%, #330867 100%)'}">

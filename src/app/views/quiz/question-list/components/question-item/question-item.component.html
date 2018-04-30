@@ -1,9 +1,7 @@
-<div class="slanted">
-  <div class="slanted-top">
+<app-slanted>
     <h3 *ngIf="!editMode">{{ 'quiz.questionList.item.title.new' | translate }}</h3>
     <h3 *ngIf="editMode">{{ 'quiz.questionList.item.title.edit' | translate }}</h3>
-  </div>
-</div>
+</app-slanted>
 <form class="question-form" [formGroup]="questionForm" (ngSubmit)="onSubmit()">
   <div class="row" style="display: none;">
     <div class="col-12">

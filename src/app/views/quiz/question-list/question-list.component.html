@@ -2,11 +2,7 @@
   <div class="questions-list col-sm-12 col-lg-6">
     <div class="row">
       <div class="col-12">
-        <div class="slanted">
-          <div class="slanted-top">
-            <h3>{{ 'quiz.questionList.title' | translate}}</h3>
-          </div>
-        </div>
+        <app-slanted><h3>{{ 'quiz.questionList.title' | translate}}</h3></app-slanted>
         <ng-container *ngIf="questions">
           <ul class="list-group list" [sortablejs]="questions" [sortablejsOptions]="questionOptions">
             <div *ngFor="let question of questions"

@@ -3,11 +3,12 @@ import {FormsModule} from '@angular/forms';
 
 import {SignupComponent} from './signup/signup.component';
 import {SigninComponent} from './signin/signin.component';
-import {environment} from '../../../../environments/environment';
+import {environment} from '../../environments/environment';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {TranslateModule} from '@ngx-translate/core';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {TranslateModule} from '@ngx-translate/core';
   ],
   imports: [
     FormsModule,
+    SharedModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,

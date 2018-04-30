@@ -42,7 +42,7 @@
         "0": "Kaj naj rečem..."
       },
       "scoreText": "Tvoj rezultat je <strong>{{ points }}</strong> / <strong>{{ totalPoints}}</strong>",
-      "scorePct": "Odgovoril/a si na <strong>{{ scorePct }}%</strong> vprašanj prav!",
+      "scorePct": "Pravilno si odgovoril/a na <strong>{{ scorePct }}%</strong> vprašanj!",
       "toolbar": {
         "tryAgain": "Poskusi ponovno"
       }

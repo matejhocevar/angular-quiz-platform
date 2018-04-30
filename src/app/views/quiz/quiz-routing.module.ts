@@ -6,7 +6,7 @@ import {QuestionComponent} from './question/question.component';
 import {QuizComponent} from './quiz.component';
 import {QuestionItemComponent} from './question-list/components/question-item/question-item.component';
 import {QuestionItemStartComponent} from './question-list/components/question-item-start/question-item-start.component';
-import {AuthGuard} from '../../shared/components/auth/auth-guard.service';
+import {AuthGuard} from '../../auth/auth-guard.service';
 import {QuizStartComponent} from './quiz-start/quiz-start.component';
 import {QuizEndComponent} from './quiz-end/quiz-end.component';
 import {QuizEndGuard, QuizGuard} from './quiz-guard.service';

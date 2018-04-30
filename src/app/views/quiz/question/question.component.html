@@ -1,10 +1,6 @@
 <form class="question-form" [formGroup]="questionForm" (ngSubmit)="onCheck()">
   <div class="quiz-card col-md-6 mx-auto">
-    <div class="slanted">
-      <div class="slanted-top">
-        <h3>{{ 'quiz.question.title' | translate:{id:question ? question.order : '?'} }}</h3>
-      </div>
-    </div>
+    <app-slanted><h3>{{ 'quiz.question.title' | translate:{id:question ? question.order : '?'} }}</h3></app-slanted>
     <div class="card">
       <div class="card-header text-center">
         <h5>{{ question.question }}</h5>
