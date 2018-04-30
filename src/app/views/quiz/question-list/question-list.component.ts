@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {SortablejsOptions} from 'angular-sortablejs';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -9,7 +9,8 @@ import {QuizService} from '../quiz.service';
 @Component({
   selector: 'app-question-list',
   templateUrl: './question-list.component.html',
-  styleUrls: ['./question-list.component.styl']
+  styleUrls: ['./question-list.component.styl'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class QuestionListComponent implements OnInit {
   subscription: Subscription;

@@ -11,7 +11,7 @@
                  routerLinkActive="active">
               <i class="drag-handle fui-list"></i>
               <span><strong>{{ question.order}}.</strong></span>
-              <span>{{ question.question }}</span>
+              <div [innerHTML]="question.question"></div>
               <i class="remove-handle fui-trash float-right" (click)="onDeleteAnswer(question.id)"></i>
             </div>
           </ul>

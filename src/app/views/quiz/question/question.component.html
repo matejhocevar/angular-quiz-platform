@@ -3,7 +3,7 @@
     <app-slanted><h3>{{ 'quiz.question.title' | translate:{id:question ? question.order : '?'} }}</h3></app-slanted>
     <div class="card">
       <div class="card-header text-center">
-        <h5>{{ question.question }}</h5>
+        <div class="question" [innerHTML]="question.question"></div>
         <small *ngIf="question.hint" class="question-hint text-muted">{{ 'quiz.question.hint' | translate:{hint:question.hint} }}</small>
       </div>
       <div class="card-body">
@@ -32,11 +32,10 @@
                      id="answer-{{i}}">
             </div>
             <div class="col-10 text-left">
-                <label for="answer-{{i}}"
-                       class="answer-label"
-                       [ngClass]="question.checked && answer.value.isCorrect ? 'correct' : ''">
-                  {{ answer.value.text }}
-                </label>
+                <div class="card-text answer-label"
+                     [ngClass]="question.checked && answer.value.isCorrect ? 'correct' : ''"
+                     [innerHTML]="answer.value.text">
+                </div>
             </div>
           </div>
         </div>
