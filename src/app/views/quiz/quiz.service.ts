@@ -73,32 +73,36 @@ export class QuizService {
     this.questionsChanged.next(this.questions.slice());
   }
 
-  changeQuestionOrder(idFirst: number, idSecond: number) {
-    const firstIndex = this.questions.findIndex(question => question.id === idFirst);
-    const secondIndex = this.questions.findIndex(question => question.id === idSecond);
-    const tempOrder = this.questions[firstIndex].order;
-    this.questions[firstIndex].order = this.questions[secondIndex].order;
-    this.questions[secondIndex].order = tempOrder;
+  changeQuestionOrder(orderTo: number, orderFrom: number) {
+    const fromIndex = this.questions.findIndex(question => question.order === orderFrom);
+    const toIndex = this.questions.findIndex(question => question.order === orderTo);
+    const tempOrder = this.questions[toIndex].order;
+    this.questions[toIndex].order = this.questions[fromIndex].order;
+    this.questions[fromIndex].order = tempOrder;
 
-    this.questionsRef.set(firstIndex.toString(), this.questions[firstIndex]);
-    this.questionsRef.set(secondIndex.toString(), this.questions[secondIndex]);
+    this.questionsRef.set(this.questions[fromIndex].id.toString(), this.questions[fromIndex]);
+    this.questionsRef.set(this.questions[toIndex].id.toString(), this.questions[toIndex]);
     this.questionsChanged.next(this.questions.slice());
   }
 
   private getNextId(): number {
-    if (this.questions && this.questions.length > 0) {
-      return this.questions[this.questions.length - 1].id + 1;
-    } else {
-      return 0;
-    }
+    let max = -1;
+    this.questions.map(question => {
+      if (max < question.id) {
+        max = question.id;
+      }
+    });
+    return max + 1;
   }
 
   private getNextOrder(): number {
-    if (this.questions && this.questions.length > 0) {
-      return this.questions[this.questions.length - 1].order + 1;
-    } else {
-      return 1;
-    }
+    let max = 0;
+    this.questions.map(question => {
+      if (max < question.order) {
+        max = question.order;
+      }
+    });
+    return max + 1;
   }
 
   navigateQuiz() {
