@@ -13,11 +13,11 @@ export class AppComponent implements OnInit {
     private titleService: Title,
     private translate: TranslateService
   ) {
-    this.translate.setDefaultLang('en');
+    this.translate.setDefaultLang(environment.language);
     this.translate.use(environment.language);
   }
 
   ngOnInit() {
-    this.translate.get('name').subscribe(text => {console.log(text); return this.titleService.setTitle(text);});
+    this.translate.get('name').subscribe(text => this.titleService.setTitle(text));
   }
 }

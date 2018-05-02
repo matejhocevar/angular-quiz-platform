@@ -54,7 +54,7 @@
     <div class="col-12" formArrayName="answers">
       <h5>{{ 'quiz.questionList.item.answers.title' | translate }} <i class="fui-plus add-handle" (click)="onAddAnswer()"></i></h5>
       <div class="row"
-        *ngFor="let answerCtrl of questionForm.get('answers').controls; let i = index"
+        *ngFor="let answerCtrl of questionForm.get('answers')['controls']; let i = index"
         [formGroupName]="i"
         style="margin-top: 10px;">
         <div class="col-8">

@@ -16,7 +16,7 @@ export class QuizStartComponent implements OnInit {
   questions: Question[];
 
   constructor(
-    private quizService: QuizService,
+    public quizService: QuizService,
     private title: Title,
     private translate: TranslateService
   ) { }
