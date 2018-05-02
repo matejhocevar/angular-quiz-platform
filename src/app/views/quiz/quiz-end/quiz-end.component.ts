@@ -10,6 +10,7 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./quiz-end.component.styl']
 })
 export class QuizEndComponent implements OnInit {
+  i18nRouting = environment.routing;
   quiz = environment.quiz;
   headline: Object;
   headlines = [

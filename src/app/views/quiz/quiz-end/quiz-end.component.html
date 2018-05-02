@@ -1,9 +1,5 @@
 <div class="quiz-card col-md-6 mx-auto">
-  <div class="slanted">
-    <div class="slanted-top">
-      <h3>{{ 'quiz.end.title' | translate }}</h3>
-    </div>
-  </div>
+  <app-slanted><h3>{{ 'quiz.end.title' | translate }}</h3></app-slanted>
   <div class="card">
     <div class="card-header text-center text-white"
          [ngStyle]="{'background': quiz.imagePath && quiz.imagePath.length > 0 ? 'url(' + quiz.imagePath + ')' : 'linear-gradient(to top, #30cfd0 0%, #330867 100%)'}">
@@ -14,7 +10,7 @@
       <p class="card-text" [innerHTML]="'quiz.end.scorePct' | translate:{scorePct: scorePct}"></p>
     </div>
     <div class="card-footer text-center">
-      <button routerLink="/quiz/start"
+      <button [routerLink]="'/' + i18nRouting.main + '/' + i18nRouting.quiz.start"
               class="btn btn-success">{{ 'quiz.end.toolbar.tryAgain' | translate }}</button>
     </div>
   </div>

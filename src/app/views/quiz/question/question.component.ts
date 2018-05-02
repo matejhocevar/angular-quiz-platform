@@ -36,13 +36,15 @@ export class QuestionComponent implements OnInit {
       answers: this.formBuilder.array([])
     });
 
-    for (const a of this.question.answers) {
-      const answerArray = (this.questionForm.get('answers')) as FormArray;
-      answerArray.push(this.formBuilder.group({
-        text: a.text,
-        isCorrect: a.isCorrect,
-        answer: a.answer
-      }));
+    if (this.question.answers) {
+      for (const a of this.question.answers) {
+        const answerArray = (this.questionForm.get('answers')) as FormArray;
+        answerArray.push(this.formBuilder.group({
+          text: a.text,
+          isCorrect: a.isCorrect,
+          answer: a.answer
+        }));
+      }
     }
   }
 
@@ -64,15 +66,20 @@ export class QuestionComponent implements OnInit {
   calculateScore(answersList: Answer[]): Score {
     const score = {} as Score;
     score.points = 0;
-    score.totalPoints = this.numOfCorrectAnswers();
 
-    const answered = answersList.filter(answer => answer.answer);
-    if (answered.length <= this.numOfCorrectAnswers()) {
-      answersList.map(answer => {
-        if (answer.answer && answer.isCorrect) {
-          score.points++;
-        }
-      });
+    if (this.question.answers) {
+      score.totalPoints = this.numOfCorrectAnswers();
+
+      const answered = answersList.filter(answer => answer.answer);
+      if (answered.length <= this.numOfCorrectAnswers()) {
+        answersList.map(answer => {
+          if (answer.answer && answer.isCorrect) {
+            score.points++;
+          }
+        });
+      }
+    } else {
+      score.totalPoints = 0;
     }
 
     return score;

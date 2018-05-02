@@ -19,5 +19,22 @@ export const environment = {
     description: '<your-quiz-description>',
     imagePath: '<your-quiz-image-path>'
   },
-  language: 'en'
+  language: 'en',
+  routing: {
+    main: 'quiz',
+    quiz: {
+      start: 'start',
+      end: 'end',
+      list: {
+        main: 'list',
+        new: 'new',
+        edit: 'edit'
+      }
+    },
+    auth: {
+      signin: 'signin',
+      signup: 'signup',
+      signout: 'signout'
+    }
+  }
 };

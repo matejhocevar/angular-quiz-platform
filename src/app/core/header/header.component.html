@@ -6,22 +6,26 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/quiz/start">{{ 'navbar.start' | translate }}</a>
+            <a class="nav-link" [routerLink]="'/' + i18nRouting.main + '/' + i18nRouting.quiz.start">
+              {{ 'navbar.start' | translate }}
+            </a>
           </li>
           <li class="nav-item" routerLinkActive="active" *ngIf="authService.isAuthenticated()">
-            <a class="nav-link" routerLink="/quiz/list">{{ 'navbar.questionList' | translate }}</a>
+            <a class="nav-link" [routerLink]="'/' + i18nRouting.main + '/' + i18nRouting.quiz.list.main">
+              {{ 'navbar.questionList' | translate }}
+            </a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
           <ng-template [ngIf]="!authService.isAuthenticated()">
-            <li class="nav-item"><a class="nav-link" routerLink="/signup">{{ 'navbar.register' | translate }}</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/signin">{{ 'navbar.login' | translate }}</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="'/' + i18nRouting.auth.signup">{{ 'navbar.register' | translate }}</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="'/' + i18nRouting.auth.signin">{{ 'navbar.login' | translate }}</a></li>
           </ng-template>
           <li class="nav-item"
               *ngIf="authService.isAuthenticated()">
             <a class="nav-link"
                (click)="onLogout()"
-               routerLink="/signout">{{ 'navbar.logOut' | translate }}</a>
+               [routerLink]="'/' + i18nRouting.auth.signout">{{ 'navbar.logOut' | translate }}</a>
           </li>
         </ul>
       </div>

@@ -6,7 +6,7 @@
         <div class="question" [innerHTML]="question.question"></div>
         <small *ngIf="question.hint" class="question-hint text-muted">{{ 'quiz.question.hint' | translate:{hint:question.hint} }}</small>
       </div>
-      <div class="card-body">
+      <div class="card-body" *ngIf="question.answers">
         <div class="row">
           <small class="question-correct-answers text-muted text-center"> {{ getNumOfCorrectPlural(numOfCorrectAnswers()) | translate:{number: numOfCorrectAnswers()} }}</small>
         </div>

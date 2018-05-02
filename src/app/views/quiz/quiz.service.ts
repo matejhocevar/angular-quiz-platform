@@ -6,6 +6,7 @@ import {AngularFireDatabase} from 'angularfire2/database';
 import {Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
+import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class QuizService {
@@ -111,12 +112,12 @@ export class QuizService {
     }
 
     if (this.quizEnded) {
-      this.router.navigate(['/quiz/end']);
+      this.router.navigate([`/${environment.routing.main}/${environment.routing.quiz.end}`]);
       return false;
     }
 
     if (!this.quizStarted) {
-      this.router.navigate(['/quiz/start']);
+      this.router.navigate([`/${environment.routing.main}/${environment.routing.quiz.start}`]);
       return false;
     }
 
@@ -133,13 +134,13 @@ export class QuizService {
   moveToNextQuestion() {
     if (this.nextQuestionId() == null) {
       this.quizEnded = true;
-      this.router.navigate(['/quiz/end']);
+      this.router.navigate([`/${environment.routing.main}/${environment.routing.quiz.end}`]);
       this.translate.get('quiz.end.title').subscribe(text => this.title.setTitle(text));
       return;
     }
 
     const nextQuestionId = this.nextQuestionId();
-    this.router.navigate([`/quiz/${+nextQuestionId}`]);
+    this.router.navigate([`/${environment.routing.main}/${+nextQuestionId}`]);
     this.translate.get('quiz.question.title', {id: nextQuestionId}).subscribe(text => this.title.setTitle(text));
   }
 

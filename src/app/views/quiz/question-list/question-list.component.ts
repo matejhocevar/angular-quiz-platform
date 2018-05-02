@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 import {Question} from '../../../models/quiz/question.model';
 import {QuizService} from '../quiz.service';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-question-list',
@@ -40,11 +41,11 @@ export class QuestionListComponent implements OnInit {
   }
 
   onNewQuestion() {
-    this.router.navigate(['new'], {relativeTo: this.route});
+    this.router.navigate([`${environment.routing.quiz.list.new}`], {relativeTo: this.route});
   }
 
   onDeleteAnswer(index: number) {
     this.quizService.deleteQuestion(index);
-    this.router.navigate(['/quiz/list']);
+    this.router.navigate([`/${environment.routing.main}/${environment.routing.quiz.list.main}`]);
   }
 }
