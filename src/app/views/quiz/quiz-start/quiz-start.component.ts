@@ -37,10 +37,12 @@ export class QuizStartComponent implements OnInit {
 
   onQuizStart(form: NgForm) {
     const showProgress = form.value ? form.value.showProgress : false;
+    const showNumCorrectAnswers = form.value ? form.value.showNumCorrectAnswers : false;
     const randomQuestions = form.value ? form.value.randomQuestions : false;
 
     this.prepareQuestions(randomQuestions);
 
+    this.quizService.showNumCorrectAnswers = showNumCorrectAnswers;
     this.quizService.quizStarted = true;
     this.quizService.quizEnded = false;
 

@@ -8,6 +8,7 @@
       "options": {
         "label": "Možnosti kviza:",
         "trackProgress": "Beleži napredek",
+        "numCorrectAnswers": "Prikaži št. pravilnih odgovorov",
         "randomQuestions": "Naključna vprašanja"
       },
       "toolbar": {

@@ -12,6 +12,8 @@ import {environment} from '../../../environments/environment';
 export class QuizService {
   questionsChanged = new Subject<Question[]>();
 
+  showNumCorrectAnswers = false;
+
   quizStarted = false;
   quizEnded = false;
 
