@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Question} from '../../../../../models/quiz/question.model';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {QuizService} from '../../../quiz.service';
+import {environment} from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-question-item',
@@ -24,7 +25,7 @@ export class QuestionItemComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        this.editMode = params['id'] != null && params['id'] !== 'new';
+        this.editMode = params['id'] != null && params['id'] !== environment.routing.quiz.list.new;
 
         this.initForm();
       }

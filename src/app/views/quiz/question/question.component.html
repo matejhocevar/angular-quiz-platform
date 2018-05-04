@@ -32,10 +32,10 @@
                      id="answer-{{i}}">
             </div>
             <div class="col-10 text-left">
-                <div class="card-text answer-label"
+                <label for="answer-{{i}}" class="card-text answer-label"
                      [ngClass]="question.checked && answer.value.isCorrect ? 'correct' : ''"
                      [innerHTML]="answer.value.text">
-                </div>
+                </label>
             </div>
           </div>
         </div>
