@@ -21,15 +21,15 @@
               <p class="card-text">{{ 'quiz.start.options.label' | translate }}</p>
               <div class="row quiz-show-progress">
                 <div class="col-1"><input type="checkbox" id="showProgress" name="showProgress" disabled="disabled" ngModel></div>
-                <div class="col-11 text-left"><p>{{ 'quiz.start.options.trackProgress' | translate }}</p></div>
+                <div class="col-11 text-left"><label for="showProgress" disabled="disabled">{{ 'quiz.start.options.trackProgress' | translate }}</label></div>
               </div>
               <div class="row quiz-random">
                 <div class="col-1"><input type="checkbox" id="randomQuestions" name="randomQuestions" ngModel></div>
-                <div class="col-11 text-left"><p>{{ 'quiz.start.options.randomQuestions' | translate }}</p></div>
+                <div class="col-11 text-left"><label for="randomQuestions">{{ 'quiz.start.options.randomQuestions' | translate }}</label></div>
               </div>
               <div class="row quiz-show-num-correct-answers">
                 <div class="col-1"><input type="checkbox" id="showNumCorrectAnswers" name="showNumCorrectAnswers" ngModel></div>
-                <div class="col-11 text-left"><p>{{ 'quiz.start.options.numCorrectAnswers' | translate }}</p></div>
+                <div class="col-11 text-left"><label for="showNumCorrectAnswers">{{ 'quiz.start.options.numCorrectAnswers' | translate }}</label></div>
               </div>
             </div>
           </div>
