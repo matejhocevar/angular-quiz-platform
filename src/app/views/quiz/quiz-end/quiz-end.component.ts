@@ -35,7 +35,7 @@ export class QuizEndComponent implements OnInit {
 
   calculateScore() {
     [this.points, this.totalPoints] = this.quizService.getTotalScore();
-    this.scorePct = ((this.points / this.totalPoints) * 100).toFixed(2);
+    this.scorePct = parseInt(((this.points / this.totalPoints) * 100).toFixed(2), 10);
   }
 
   calculateHeadline() {
