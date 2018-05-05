@@ -62,16 +62,14 @@
             class="form-control"
             formControlName="text">
         </div>
-        <div class="col-3">
+        <div class="col-4">
           <input type="checkbox"
             class="form-control"
             formControlName="isCorrect"
           ><label>{{ 'quiz.questionList.item.answers.isCorrect' | translate }}</label>
-        </div>
-        <div class="col-1">
           <i class="remove-handle fui-cross"
              (click)="onDeleteAnswer(i)"
-          ></i>
+             style="margin-left: 5px"></i>
         </div>
       </div>
     </div>
