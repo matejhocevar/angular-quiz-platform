@@ -164,4 +164,8 @@ export class QuizService {
 
     return [points, totalPoints];
   }
+
+  getQuestionProgress(): number {
+    return (this.questionsCompleted.length / this.questions.length) * 100;
+  }
 }

@@ -56,7 +56,15 @@ html {
       background: $green;
 
       &[disabled] {
-        background:
+        background: $green-disabled;
+      }
+    }
+
+    .btn-primary {
+      background: $blue;
+
+      &[disabled] {
+        background: $blue-disabled;
       }
     }
 
@@ -68,6 +76,16 @@ html {
       justify-content: center;
       align-content: stretch;
       align-items: stretch;
+    }
+
+    .quiz-card {
+      position: relative;
+      top: -25px;
+      margin-bottom: 25px;
+    }
+
+    .col-xs-1 {
+      margin-right: 10px;
     }
   }
 }

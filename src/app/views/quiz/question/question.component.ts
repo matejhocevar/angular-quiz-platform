@@ -16,7 +16,7 @@ export class QuestionComponent implements OnInit {
   id: number;
   questionForm: FormGroup;
 
-  constructor(private quizService: QuizService,
+  constructor(public quizService: QuizService,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder
   ) { }

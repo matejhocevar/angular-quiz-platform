@@ -11,25 +11,27 @@
       </div>
         <div class="card-body">
           <div class="container">
-            <ng-container *ngIf="questions">
-              <p class="card-text" [innerHTML]="'quiz.start.description' | translate:{number: questions.length}"></p>
+            <ng-container *ngIf="questions.length > 0">
+              <p class="card-text" [innerHTML]="'quiz.start.description' | translate:{number: questions.length }"></p>
             </ng-container>
-            <ng-container *ngIf="!questions">
+            <ng-container *ngIf="questions.length < 1">
               <p class="card-text">{{ 'quiz.start.loading' | translate }}</p>
             </ng-container>
             <div class="quiz-form">
               <p class="card-text">{{ 'quiz.start.options.label' | translate }}</p>
-              <div class="row quiz-show-progress">
-                <div class="col-1"><input type="checkbox" id="showProgress" name="showProgress" disabled="disabled" ngModel></div>
-                <div class="col-11 text-left"><label for="showProgress" disabled="disabled">{{ 'quiz.start.options.trackProgress' | translate }}</label></div>
-              </div>
-              <div class="row quiz-random">
-                <div class="col-1"><input type="checkbox" id="randomQuestions" name="randomQuestions" ngModel></div>
-                <div class="col-11 text-left"><label for="randomQuestions">{{ 'quiz.start.options.randomQuestions' | translate }}</label></div>
-              </div>
-              <div class="row quiz-show-num-correct-answers">
-                <div class="col-1"><input type="checkbox" id="showNumCorrectAnswers" name="showNumCorrectAnswers" ngModel></div>
-                <div class="col-11 text-left"><label for="showNumCorrectAnswers">{{ 'quiz.start.options.numCorrectAnswers' | translate }}</label></div>
+              <div class="container">
+                <!--<div class="row quiz-show-progress">-->
+                  <!--<div class="col-xs-1"><input type="checkbox" id="showProgress" name="showProgress" disabled="disabled" ngModel></div>-->
+                  <!--<div class="col-xs-11 text-left"><label for="showProgress" disabled="disabled">{{ 'quiz.start.options.trackProgress' | translate }}</label></div>-->
+                <!--</div>-->
+                <div class="row quiz-random">
+                  <div class="col-xs-1"><input type="checkbox" id="randomQuestions" name="randomQuestions" ngModel></div>
+                  <div class="col-xs-11 text-left"><label for="randomQuestions">{{ 'quiz.start.options.randomQuestions' | translate }}</label></div>
+                </div>
+                <div class="row quiz-show-num-correct-answers">
+                  <div class="col-xs-1"><input type="checkbox" id="showNumCorrectAnswers" name="showNumCorrectAnswers" ngModel></div>
+                  <div class="col-xs-11 text-left"><label for="showNumCorrectAnswers">{{ 'quiz.start.options.numCorrectAnswers' | translate }}</label></div>
+                </div>
               </div>
             </div>
           </div>

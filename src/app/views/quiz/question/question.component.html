@@ -14,9 +14,9 @@
              formArrayName="answers"
              *ngFor="let answer of questionForm.get('answers').controls; let i = index;"
              style="margin-top: 10px;">
-          <div class="row answer"
+          <div class="answer"
                [formGroupName]="i">
-            <div class="col-1">
+            <div class="flex-1" style="min-width: 20px;">
               <ng-container *ngIf="question.checked && getAnswerStatus(answer) === 'correct'">
                 <i class="correct fui-check"></i>
               </ng-container>
@@ -24,20 +24,25 @@
                 <i class="incorrect fui-cross"></i>
               </ng-container>
             </div>
-            <div class="col-1">
+            <div class="flex-1">
               <input type="checkbox"
                      class="form-control"
                      formControlName="answer"
                      name="answer-{{i}}"
                      id="answer-{{i}}">
             </div>
-            <div class="col-10 text-left">
+            <div class="flex-10 text-left">
                 <label for="answer-{{i}}" class="card-text answer-label"
                      [ngClass]="question.checked && answer.value.isCorrect ? 'correct' : ''"
                      [innerHTML]="answer.value.text">
                 </label>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="card-progress">
+        <div class="progress">
+          <div class="progress-bar" [ngStyle]="{width: quizService.getQuestionProgress() + '%'}"></div>
         </div>
       </div>
       <div class="card-footer">

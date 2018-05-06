@@ -1,40 +1,70 @@
 @import '../../../../variables.styl';
+.quiz-card{
+  .card-header {
+    .question {
+      margin-top: 20px;
+      margin-bottom: .5rem;
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.2;
 
-.card-header {
-  .question {
-    margin-top: 20px;
-    margin-bottom: .5rem;
-    font-size: 1.25rem;
-    font-weight: 500;
-    line-height: 1.2;
-
-    img {
-      display: inline-block;
-      max-width: 100%;
-      max-height: $question-img-max-height;
-      height: auto;
-      margin: 5px 10px;
+      img {
+        display: inline-block;
+        max-width: 100%;
+        max-height: $question-img-max-height;
+        height: auto;
+        margin: 5px 10px;
+      }
     }
   }
-}
 
-.card-body {
-  .question-correct-answers {
-    margin: 0 auto;
-    padding-top: 0;
-  }
+  .card-body {
+    .question-correct-answers {
+      margin: 0 auto;
+      padding-top: 0;
+    }
 
-  .question-answer {
-    height: auto;
+    .question-answer {
+      height: auto;
 
-    .answer {
-      label, input {
-        cursor: pointer;
+      .answer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: stretch;
+        align-items: flex-start;
+
+        .flex-1 {
+          order: 0;
+          flex: 0 1 10%;
+          align-self: auto;
+        }
+
+        .flex-10 {
+          order: 0;
+          flex: 0 1 80%;
+          align-self: auto;
+        }
+
+        label, input {
+          cursor: pointer;
+        }
+
+        .answer-label.correct {
+          font-weight: 600;
+          color: $green;
+        }
       }
+    }
+  }
+  .card-progress {
+    .progress {
+      border-radius: $border-radius;
+      height: 2px;
 
-      .answer-label.correct {
-        font-weight: 600;
-        color: $green;
+      .progress-bar {
+        background-color: $blue;
       }
     }
   }
