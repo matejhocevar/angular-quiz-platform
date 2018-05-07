@@ -2,9 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {QuizService} from '../quiz.service';
 import {Question} from '../../../models/quiz/question.model';
 import {environment} from '../../../../environments/environment';
-import {NgForm} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
+import {Section} from '../../../models/quiz/section.model';
 
 @Component({
   selector: 'app-quiz-start',
@@ -14,16 +15,20 @@ import {TranslateService} from '@ngx-translate/core';
 export class QuizStartComponent implements OnInit {
   quiz = environment.quiz;
   questions: Question[];
+  sections: Section[];
+  sectionForm: FormGroup;
 
   constructor(
     public quizService: QuizService,
     private title: Title,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
     this.translate.get('quiz.start.title').subscribe(text => this.title.setTitle(text));
     this.questions = this.quizService.questions;
+    this.sections = this.quizService.getSections();
 
     if (this.quizService.quizEnded) {
       this.quizService.quizStarted = false;
@@ -33,10 +38,11 @@ export class QuizStartComponent implements OnInit {
     this.quizService.questionsChanged.subscribe(questions => {
       this.questions = questions;
     });
+
+    this.initSectionForm();
   }
 
   onQuizStart(form: NgForm) {
-    const showProgress = form.value ? form.value.showProgress : false;
     const showNumCorrectAnswers = form.value ? form.value.showNumCorrectAnswers : false;
     const randomQuestions = form.value ? form.value.randomQuestions : false;
 
@@ -53,13 +59,48 @@ export class QuizStartComponent implements OnInit {
     this.quizService.moveToNextQuestion();
   }
 
+  initSectionForm() {
+    this.sectionForm = this.formBuilder.group({
+      sections: this.formBuilder.array([])
+    });
+
+    if (this.sections) {
+      for (const s of this.sections) {
+        const sectionArray = (this.sectionForm.get('sections')) as FormArray;
+        sectionArray.push(this.formBuilder.group({
+          id: s.id,
+          title: s.title,
+          isChecked: true
+        }));
+      }
+
+      this.sectionForm.get('sections')
+        .valueChanges.subscribe((sections) => {
+        const filteredSections = sections
+          .filter(section => section.isChecked)
+          .map(section => section.id)
+          .map(section => this.sections.find(s => s.id === section));
+
+        this.quizService.filteredQuestions = this.questions
+          .filter(question => {
+            if (question.section) {
+              return filteredSections.find(section => section.id === question.section.id);
+            } else {
+              return false;
+            }
+          })
+          .slice();
+      });
+    }
+  }
+
   prepareQuestions(random: boolean) {
     this.quizService.questionsCompleted = [];
 
     if (random) {
-      this.quizService.questionsTodo = this.shuffle(this.questions.slice());
+      this.quizService.questionsTodo = this.shuffle(this.quizService.filteredQuestions.slice());
     } else {
-      this.quizService.questionsTodo = this.questions.slice();
+      this.quizService.questionsTodo = this.quizService.filteredQuestions.slice();
     }
   }
 

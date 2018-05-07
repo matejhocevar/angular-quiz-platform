@@ -5,6 +5,10 @@
       "title": "Začni kviz",
       "description": "Zate smo pripravili <strong>{{ number }}</strong> vprašanj! Preizkusi svoje znanje, da ugotoviš koliko jih lahko pravilno rešiš. Uživaj!",
       "loading": "Nalaganje vprašanj...",
+      "sections": {
+        "label": "Poglavja",
+        "noQuestions": "Ni vprašanj za izbrana poglavja"
+      },
       "options": {
         "label": "Možnosti kviza:",
         "trackProgress": "Beleži napredek",
@@ -60,6 +64,7 @@
         },
         "id": "Id",
         "question": "Vprašanje",
+        "section": "Poglavje",
         "hint": "Namig",
         "order": "Vrstni red",
         "answers": {

@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Question} from '../../../../../models/quiz/question.model';
-import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {QuizService} from '../../../quiz.service';
 import {environment} from '../../../../../../environments/environment';
+import {Section} from '../../../../../models/quiz/section.model';
 
 @Component({
   selector: 'app-question-item',
@@ -14,6 +15,8 @@ export class QuestionItemComponent implements OnInit {
   id: number;
   editMode = false;
   questionForm: FormGroup;
+  sections: Section[];
+  question: Question;
 
   constructor(
     private quizService: QuizService,
@@ -27,12 +30,21 @@ export class QuestionItemComponent implements OnInit {
         this.id = +params['id'];
         this.editMode = params['id'] != null && params['id'] !== environment.routing.quiz.list.new;
 
+        if (this.editMode) {
+          this.question = this.quizService.getQuestion(this.id);
+        } else {
+          this.question = null;
+        }
+
+        this.sections = this.quizService.getSections();
         this.initForm();
       }
     );
   }
 
   onSubmit() {
+    this.questionForm.value['section'] = this.sections.find(section => section.id === this.questionForm.value['section']);
+
     if (this.editMode) {
       this.quizService.updateQuestion(this.id, this.questionForm.value);
     } else {
@@ -71,14 +83,16 @@ export class QuestionItemComponent implements OnInit {
     let questionText = '';
     let questionHint = '';
     let questionOrder: number;
+    let questionSection: string;
     const answers = new FormArray([]);
 
     if (this.editMode) {
-      const question: Question = this.quizService.getQuestion(this.id);
+      const question: Question = this.question;
       questionId = question.id;
       questionText = question.question;
       questionHint = question.hint;
       questionOrder = question.order;
+      questionSection = question.section ? question.section.id : null;
 
       if (question['answers']) {
         for (const answer of question.answers) {
@@ -98,7 +112,8 @@ export class QuestionItemComponent implements OnInit {
         'question': new FormControl(questionText, Validators.required),
         'hint': new FormControl(questionHint),
         'order': new FormControl(questionOrder),
-        'answers': answers
+        'answers': answers,
+        'section': new FormControl(questionSection)
       }
     );
   }

@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {TranslateService} from '@ngx-translate/core';
 import {environment} from '../../../environments/environment';
+import {Section} from '../../models/quiz/section.model';
 
 @Injectable()
 export class QuizService {
@@ -20,7 +21,9 @@ export class QuizService {
   public questionsCompleted: Question[] = [];
   public questionsTodo: Question[] = [];
 
+  public sections: Section[] = environment.quiz.sections;
   public questions: Question[] = [];
+  public filteredQuestions: Question[] = null;
   private questionsRef;
 
   constructor(
@@ -32,6 +35,7 @@ export class QuizService {
     this.questionsRef = db.list('questions', ref => ref.orderByChild('order'));
     this.questionsRef.valueChanges().subscribe(questions => {
       this.questions = questions;
+      this.filteredQuestions = questions;
       this.questionsChanged.next(this.questions.slice());
     });
   }
@@ -46,6 +50,10 @@ export class QuizService {
 
   getQuestionByOrder(order: number): Question {
     return this.questions.find(question => question.order === order);
+  }
+
+  getSections(): Section[] {
+    return this.sections;
   }
 
   addQuestion(question: Question) {
@@ -166,6 +174,6 @@ export class QuizService {
   }
 
   getQuestionProgress(): number {
-    return (this.questionsCompleted.length / this.questions.length) * 100;
+    return (this.questionsCompleted.length / this.filteredQuestions.length) * 100;
   }
 }

@@ -1,4 +1,5 @@
 import {Answer} from './answer.model';
+import {Section} from './section.model';
 
 export interface Question {
   id?: number;
@@ -8,6 +9,7 @@ export interface Question {
   order?: number;
   checked?: boolean;
   score?: Score;
+  section?: Section;
 }
 
 export interface Score {

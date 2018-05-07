@@ -27,6 +27,21 @@
       </div>
     </div>
   </div>
+  <div class="row" *ngIf="sections && sections.length > 0">
+    <div class="col-12">
+      <label for="question">{{ 'quiz.questionList.item.section' | translate }}</label>
+    </div>
+    <div class="col-12 question-section"
+         *ngFor="let section of sections">
+      <label>
+        <input type="radio"
+               name="section"
+               formControlName="section"
+               [value]="section.id">
+        {{ section.title }}
+      </label>
+    </div>
+  </div>
   <div class="row">
     <div class="col-12">
       <div class="form-group">
