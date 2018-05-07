@@ -66,11 +66,11 @@
         </div>
         <div class="card-footer text-center">
           <ng-container *ngIf="quizService && quizService.quizStarted">
-            <button class="btn btn-default text-center float-left" type="submit" (click)="onQuizStart()" [disabled]="!quizService.filteredQuestions">{{ 'quiz.start.toolbar.startAgain' | translate }}</button>
-            <button class="btn btn-success text-center float-right" type="button" (click)="onQuizResume()" [disabled]="!quizService.filteredQuestions">{{ 'quiz.start.toolbar.resumeQuiz' | translate }}</button>
+            <button class="btn btn-default text-center float-left" type="submit" (click)="onQuizStart()" [disabled]="!quizService.filteredQuestions || quizService.filteredQuestions.length < 1">{{ 'quiz.start.toolbar.startAgain' | translate }}</button>
+            <button class="btn btn-success text-center float-right" type="button" (click)="onQuizResume()" [disabled]="!quizService.filteredQuestions || quizService.filteredQuestions.length < 1">{{ 'quiz.start.toolbar.resumeQuiz' | translate }}</button>
           </ng-container>
           <ng-container *ngIf="quizService && !quizService.quizStarted">
-            <button class="btn btn-success text-center" type="submit" [disabled]="!quizService.filteredQuestions">{{ 'quiz.start.toolbar.startQuiz' | translate }}</button>
+            <button class="btn btn-success text-center" type="submit" [disabled]="!quizService.filteredQuestions || quizService.filteredQuestions.length < 1">{{ 'quiz.start.toolbar.startQuiz' | translate }}</button>
           </ng-container>
         </div>
     </div>
