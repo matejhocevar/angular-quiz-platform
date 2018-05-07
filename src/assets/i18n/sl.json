@@ -3,7 +3,7 @@
   "quiz": {
     "start": {
       "title": "Začni kviz",
-      "description": "Zate smo pripravili <strong>{{ number }}</strong> vprašanj! Preizkusi svoje znanje, da ugotoviš koliko jih lahko pravilno rešiš. Uživaj!",
+      "description": "Pripravili smo <strong>{{ number }}</strong> vprašanj! Preizkusi svoje znanje, da ugotoviš koliko jih lahko pravilno rešiš. Uživaj!",
       "loading": "Nalaganje vprašanj...",
       "sections": {
         "label": "Poglavja",
