@@ -10,6 +10,7 @@ import {environment} from '../../../environments/environment';
 })
 export class HeaderComponent implements OnInit {
   i18nRouting = environment.routing;
+  allowRegistrations = environment.allowRegistrations;
 
   constructor(
     private router: Router,

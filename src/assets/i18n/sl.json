@@ -6,7 +6,7 @@
       "description": "Pripravili smo <strong>{{ number }}</strong> vprašanj! Preizkusi svoje znanje, da ugotoviš koliko jih lahko pravilno rešiš. Uživaj!",
       "loading": "Nalaganje vprašanj...",
       "sections": {
-        "label": "Poglavja",
+        "label": "Poglavja:",
         "noQuestions": "Ni vprašanj za izbrana poglavja"
       },
       "options": {

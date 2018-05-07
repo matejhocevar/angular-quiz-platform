@@ -6,7 +6,7 @@
       "description": "We've prepare <strong>{{ number }}</strong> questions for you! Lets see how many of them you can solve correctly. Enjoy!",
       "loading": "Loading questions...",
       "sections": {
-        "label": "Sections",
+        "label": "Sections:",
         "noQuestions": "There is no questions for selected sections"
       },
       "options": {

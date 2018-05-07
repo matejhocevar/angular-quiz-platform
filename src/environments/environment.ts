@@ -28,6 +28,7 @@ export const environment = {
       // }
     ]
   },
+  allowRegistrations: true,
   language: 'en',
   routing: {
     main: 'quiz',
