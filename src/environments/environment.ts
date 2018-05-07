@@ -13,11 +13,20 @@ export const environment = {
     storageBucket: '<your-storage-bucket>',
     messagingSenderId: '<your-messaging-sender-id>'
   },
+  sentry: {
+    dsn: '<your-sentry-dns>'
+  },
   quiz: {
     name: '<your-quiz-short-name>',
     title: '<you-quiz-title>',
     description: '<your-quiz-description>',
-    imagePath: '<your-quiz-image-path>'
+    imagePath: '<your-quiz-image-path>',
+    sections: [   // define sections of your quiz (eg. Animals, Cars, Fruits)
+      // {
+      //   id: 'animals',
+      //   title: 'Animals'
+      // }
+    ]
   },
   language: 'en',
   routing: {

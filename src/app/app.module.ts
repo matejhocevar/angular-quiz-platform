@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
+import * as Raven from 'raven-js';
 
 import { AppComponent } from './app.component';
 import {SortablejsModule} from 'angular-sortablejs';
@@ -9,7 +10,18 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateLoader, TranslateModule, TranslatePipe} from '@ngx-translate/core';
 import {CoreModule} from './core/core.module';
+import {environment} from '../environments/environment';
 
+
+Raven
+  .config(environment.sentry.dsn)
+  .install();
+
+export class RavenErrorHandler implements ErrorHandler {
+  handleError(err: any): void {
+    Raven.captureException(err);
+  }
+}
 
 @NgModule({
   declarations: [
@@ -30,7 +42,7 @@ import {CoreModule} from './core/core.module';
       }
     })
   ],
-  providers: [],
+  providers: [{ provide: ErrorHandler, useClass: RavenErrorHandler }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
