@@ -89,6 +89,9 @@ export class QuestionComponent implements OnInit {
     if (answer.value.answer === true) {
       return answer.value.isCorrect ? 'correct' : 'incorrect';
     }
+    if (answer.value.isCorrect === true) {
+      return 'incorrect';
+    }
     return null;
   }
 

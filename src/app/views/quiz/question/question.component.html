@@ -1,4 +1,4 @@
-<form class="question-form" [formGroup]="questionForm" (ngSubmit)="onCheck()">
+<form class="question-form" [formGroup]="questionForm">
   <div class="quiz-card col-md-6 mx-auto">
     <app-slanted><h3>{{ 'quiz.question.title' | translate:{id:question ? question.order : '?'} }}</h3></app-slanted>
     <div class="card">
@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <button [disabled]="question.checked" type="submit" class="btn btn-success">{{ 'quiz.question.toolbar.check' | translate }}</button>
+        <button [disabled]="question.checked" (click)="onCheck()" class="btn btn-success">{{ 'quiz.question.toolbar.check' | translate }}</button>
         <button [disabled]="!question.checked" (click)="onNext()" class="btn btn-primary float-right">{{ 'quiz.question.toolbar.next' | translate }}</button>
       </div>
     </div>
