@@ -18,7 +18,7 @@
               <p class="card-text">{{ 'quiz.start.loading' | translate }}</p>
             </ng-container>
             <ng-container *ngIf="quizService.filteredQuestions && quizService.filteredQuestions.length < 1">
-              <p class="card-text">{{ 'quiz.start.sections.noQuestions' | translate }}</p>
+              <p class="card-text text-warning">{{ 'quiz.start.sections.noQuestions' | translate }}</p>
             </ng-container>
             <div class="quiz-form">
 
