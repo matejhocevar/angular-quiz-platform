@@ -7,7 +7,14 @@
       "loading": "Nalaganje vprašanj...",
       "sections": {
         "label": "Poglavja:",
-        "noQuestions": "Ni vprašanj za izbrana poglavja"
+        "noQuestions": "Ni vprašanj za izbrana poglavja",
+        "numOfQuestions": {
+          "0": "({{ number }} vprašanj)",
+          "1": "({{ number }} vprašanje)",
+          "2": "({{ number }} vprašanja)",
+          "34": "({{ number }} vprašanj)",
+          "plural": "({{ number }} vprašanj)"
+        }
       },
       "options": {
         "label": "Možnosti kviza:",

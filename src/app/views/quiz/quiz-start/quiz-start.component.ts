@@ -111,4 +111,24 @@ export class QuizStartComponent implements OnInit {
     }
     return array;
   }
+
+  getQuestionNumber(sectionId: string) {
+    const section = this.sections.find(s => s.id === sectionId);
+    return this.questions.filter(q => q.section.id === section.id).length;
+  }
+
+  getQuestionNumberStatus(sectionId: string) {
+    const number = this.getQuestionNumber(sectionId);
+    if (number < 1) {
+      return 'quiz.start.sections.numOfQuestions.0';
+    } else if (number === 1) {
+      return 'quiz.start.sections.numOfQuestions.1';
+    } else if (number === 2) {
+      return 'quiz.start.sections.numOfQuestions.2';
+    } else if (number === 3 || number === 4) {
+      return 'quiz.start.sections.numOfQuestions.34';
+    } else {
+      return 'quiz.start.sections.numOfQuestions.plural';
+    }
+  }
 }

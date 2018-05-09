@@ -42,6 +42,10 @@
                           <label for="section-{{i}}"
                                  class="card-text">
                             {{ section.value.title }}
+                            <span class="text-muted"
+                                  *ngIf="quizService.filteredQuestions">
+                              {{ getQuestionNumberStatus(section.value.id) | translate:{number: getQuestionNumber(section.value.id)} }}
+                            </span>
                           </label>
                         </div>
                       </div>

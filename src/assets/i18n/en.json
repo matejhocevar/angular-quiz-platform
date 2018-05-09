@@ -7,7 +7,14 @@
       "loading": "Loading questions...",
       "sections": {
         "label": "Sections:",
-        "noQuestions": "There is no questions for selected sections"
+        "noQuestions": "There is no questions for selected sections",
+        "numOfQuestions": {
+          "0": "({{ number }} questions)",
+          "1": "({{ number }} question)",
+          "2": "({{ number }} questions)",
+          "34": "({{ number }} questions)",
+          "plural": "({{ number }} questions)"
+        }
       },
       "options": {
         "label": "Quiz options:",
